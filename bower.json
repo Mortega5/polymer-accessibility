@@ -1,0 +1,17 @@
+{
+  "name": "polymer-accessibility",
+  "authors": [
+    "Miguel Ortega Moreno <mortega@conwet.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
