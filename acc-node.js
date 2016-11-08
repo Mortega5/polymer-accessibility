@@ -48,6 +48,7 @@ program.port = program.port || 8080; // default server port 8080
 program.protocol = program.https? 'https' : 'http';
 program.root = program.root || __dirname;
 program.root += program.root[program.root.length-1] == '/'? '':'/';
+program.timeout = program.timeout || 0;
 
 // Change reference of test file to root.
 if (test_dir.indexOf(program.root) === 0){
@@ -66,6 +67,24 @@ connect().use(serveStatic(program.root)).listen(program.port,function(){
     return instance.createPage();
   }).then(function(page){
     sitepage = page;
+    /*
+    * This function wraps WebPage.evaluate, and offers the possibility to pass
+    * parameters into the webpage function. The PhantomJS issue is here:
+    *
+    *   http://code.google.com/p/phantomjs/issues/detail?id=132
+    *
+    * This is from comment #43.
+    */
+    function evaluate(page, func) {
+      var args = [].slice.call(arguments, 2);
+      var fn = "function() { return (" + func.toString() + ").apply(this, " + JSON.stringify(args) + ");}";
+      return page.evaluate(fn);
+    }
+    function endConection(){
+      console.log('Closing server and Phantomjs');
+      var status = phInstance.exit(1);
+      server.close();
+    }
     page.on('onConsoleMessage',function(msg, lineNum, sourceId) {
       if (msg.match(/\[HTMLCS\]/)){
         var result_split = msg.split('|');
@@ -84,13 +103,15 @@ connect().use(serveStatic(program.root)).listen(program.port,function(){
 
     page.on('onInitialized',function() {
       page.injectJs('./HTML_CodeSniffer/build/HTMLCS.js');
-      page.evaluate(function(domContentLoadedMsg) {
+      evaluate(page, function(timeout) {
         document.addEventListener('WebComponentsReady', function() {
-
-          window.HTMLCS_RUNNER.run('WCAG2AA');
-          window.callPhantom(window);
-        }, false);
-      });
+          console.log(timeout);
+          setTimeout(function(){
+            window.HTMLCS_RUNNER.run('WCAG2AAA');
+            window.callPhantom(window);
+          }, false);
+        },timeout);
+      }, program.timeout);
     });
 
     page.on('onCallback',function(window) {
@@ -111,12 +132,13 @@ connect().use(serveStatic(program.root)).listen(program.port,function(){
       var report ="(" + _baseColor.error + errors.ERROR.length + '\x1b[0m/';
       report+= _baseColor.warning + errors.WARNING.length + '\x1b[0m/';
       report+= _baseColor.notice + errors.NOTICE.length + '\x1b[0m)';
-      console.log('FINAL REPORT' + report)
+      console.log('FINAL REPORT' + report);
       // ¿ORDEN?
-      phInstance.exit();
-      server.close();
+      endConection();
     });
     console.log('Open ', test_dir);
-    return page.open(test_dir);
+    return page.open(test_dir,function(){
+      setTimeout(endConection,10000 + program.timeout);
+    });
   });
 });
