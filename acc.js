@@ -1,4 +1,19 @@
 #!/usr/bin/env node
+/*
+  Copyright (c) 2016, Miguel Ortega Moreno <miguel.ortega.moreno5@gmail.com>
+
+  Permission to use, copy, modify, and/or distribute this software for any purpose
+  with or without fee is hereby granted, provided that the above copyright notice
+  and this permission notice appear in all copies.
+
+  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+  REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
+  FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,INDIRECT,
+  OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,
+  DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,NEGLIGENCE OR OTHER TORTIOUS
+  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+*/
+
 // DEPENDENCIES
 var phantom = require('phantom');
 var program = require('commander');
@@ -48,9 +63,9 @@ program
 .option('-o --output <file>','Output file')
 .option('--verbose','Show passed test')
 .option('--https','Use HTTPS instance of HTTP')
-.option('--debug','Mostrar mensajes de depuración')
 .option('--config <conf_file','Configuration file')
-.option ('-s --skip','Does not the results in CLI')
+.option ('--skip','Does not print result on console')
+.option('--viewport','View port size')
 .arguments('<test_file> ')
 .action(function(test){test_dir = test;})
 .parse(process.argv);
@@ -76,7 +91,10 @@ program.protocol = program.https? 'https' : 'http';
 program.root = program.root || __dirname;
 program.root += program.root[program.root.length-1] == '/'? '':'/';
 program.timeout = program.timeout || 0;
+program.viewport = program.viewport || '1024x768';
 
+program.viewport = program.viewport.split('x');
+program.viewport = {width:program.viewport[0],height:program.viewport[1]}
 // Change reference of test file to root.
 if (test_dir.indexOf(program.root) === 0){
   test_dir = test_dir.replace(program.root,'');
@@ -115,14 +133,14 @@ connect().use(serveStatic(program.root)).listen(program.port, function(){
         logger.debug('Server closed');
       });
     }
-
+    page.viewportSize = program.viewport;
     page.on('onConsoleMessage',function(msg, lineNum, sourceId) {
       var result_split,report;
       if (msg.match(/\[HTMLCS\]/)){
         result_split = msg.split('|');
         report = {
           type: result_split[0].split(" ")[1],
-          principle: result_split[1],
+          principle: '[' + result_split[1] + ']',
           tag: result_split[2],
           tag_id: result_split[3],
           error: result_split[4],
@@ -170,7 +188,7 @@ connect().use(serveStatic(program.root)).listen(program.port, function(){
               var result = "[AXS] ";
               if (item.result == 'FAIL') {
                 result += item.rule.severity; // TYPE
-                result += item.rule && item.rule.code ? '|[' + item.rule.code + '.' + item.rule.name +']': '|'; // principle
+                result += item.rule && item.rule.code ? '|' + item.rule.code + '.' + item.rule.name: '|'; // principle
                 result += item.elements.length > 0? '|' + item.elements[0].tagName : '|'; // tag
                 result += item.elements.length > 0 && item.elements[0].id? item.elements[0].id: '|'; //tag_id
                 result += item.rule && item.rule.heading? '|' + item.rule.heading : '|'; // error
@@ -198,7 +216,7 @@ connect().use(serveStatic(program.root)).listen(program.port, function(){
               } else if (item.result == 'PASS'){
                 result += item.result;
                 result += item.elements.length > 0? '|' + item.elements[0].tagName : '|'; // tag
-                result += '[' + item.rule.code + '.' + item.rule.name +']';
+                result += item.rule.code + '.' + item.rule.name;
                 result += '||';
                 result += '|' + item.rule.heading;
                 console.log(result);

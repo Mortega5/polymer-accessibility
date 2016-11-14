@@ -1,0 +1,28 @@
+{
+  "name": "polymer-accessibility",
+  "version": "1.0.0",
+  "description": "",
+  "main": "acc.js",
+  "dependencies": {
+    "a11y": "^0.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mortega5/polymer-accessibility.git"
+  },
+  "keywords": [
+    "accessibility",
+    "polymer",
+    "web-components"
+  ],
+  "author": "Miguel Ortega Moreno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mortega5/polymer-accessibility/issues"
+  },
+  "homepage": "https://github.com/Mortega5/polymer-accessibility#readme"
+}
