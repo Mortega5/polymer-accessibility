@@ -5,9 +5,9 @@ Web component accessibility evaluation tool. It use
 and [HTML_CodeSniffer](https://github.com/squizlabs/HTML_CodeSniffer).
 
 ## USAGE
-
-Usage: acc [options] <test_file>
 ```pre
+Usage: acc [options] <test_file>
+
 Options:
 
   -h, --help              output usage information
