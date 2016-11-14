@@ -7,7 +7,7 @@ and [HTML_CodeSniffer](https://github.com/squizlabs/HTML_CodeSniffer).
 ## USAGE
 
 Usage: acc [options] <test_file>
-
+```pre
 Options:
 
   -h, --help              output usage information
@@ -22,3 +22,4 @@ Options:
   --config <conf_file     Configuration file
   --skip                  Does not print result on console
   --viewport              View port size
+```
