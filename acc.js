@@ -5,13 +5,14 @@ var program = require('commander');
 var connect = require('connect');
 var serveStatic = require('serve-static');
 var log4js = require('log4js');
+var fs = require('fs');
 
 logger = log4js.getLogger('ACC');
 loggerConsole = log4js.getLogger('CONSOLE');
-logger.setLevel('DEBUG');
+logger.setLevel('INFO');
 loggerConsole.setLevel('INFO');
 
-// INTERNAL var
+// INTERNAL VAR
 var sitepage,
 phInstnace,
 test_url;
@@ -20,18 +21,22 @@ var _baseColor = {
   notice: '\x1b[1;34m',
   error: '\x1b[1;31m',
   warning: '\x1b[1;33m',
+  pass: '\x1b[1;32m'
 };
 
 var COLOR = {
   NOTICE: _baseColor.notice + 'NOTICE\x1b[0m',
   ERROR: _baseColor.error + 'ERROR\x1b[0m',
-  WARNING: _baseColor.warning + 'WARNING\x1b[0m'
+  WARNING: _baseColor.warning + 'WARNING\x1b[0m',
+  PASS: _baseColor.pass + 'PASS\x1b[0m'
 };
 var ORDER= {
   ERROR:1,
   WARNING: 2,
-  NOTICE: 3
+  NOTICE: 3,
+  PASS:4
 };
+
 // Program options
 program
 .version('0.1.0')
@@ -40,12 +45,22 @@ program
 .option('-t --timeout <timeout>','Waiting time at component finish',parseInt)
 .option('-r --root <dir>','Directory root for the server')
 .option('-h --host <host>','Host direction')
+.option('-o --output <file>','Output file')
+.option('--verbose','Show passed test')
 .option('--https','Use HTTPS instance of HTTP')
 .option('--debug','Mostrar mensajes de depuración')
+.option('--config <conf_file','Configuration file')
+.option ('-s --skip','Does not the results in CLI')
 .arguments('<test_file> ')
 .action(function(test){test_dir = test;})
 .parse(process.argv);
 
+if (program.config){
+  program.config = JSON.parse(fs.readFileSync(program.config, 'utf8'));
+  for(var property in program.config){
+    program[property] = program.config[property];
+  }
+}
 if (typeof test_dir === 'undefined') {
   program.help();
 }
@@ -69,11 +84,11 @@ if (test_dir.indexOf(program.root) === 0){
 
 test_dir = program.protocol + '://' + program.host + ':' + program.port + '/' + test_dir;
 
-connect().use(serveStatic(program.root)).listen(program.port,function(){
+// MAIN
+connect().use(serveStatic(program.root)).listen(program.port, function(){
   logger.info('Server running on ' + program.port + '...');
-  // MAIN
   var server = this;
-  var errors = {ERROR:[],NOTICE:[],WARNING:[],NA:[],PASS:[]};
+  var errors = {ERROR:[],NOTICE:[],WARNING:[],PASS:[]};
   phantom.create().then(function(instance){
     phInstance = instance;
     return instance.createPage();
@@ -94,15 +109,18 @@ connect().use(serveStatic(program.root)).listen(program.port,function(){
     }
     function endConection(){
       logger.info('Closing server and Phantomjs');
-      var status = phInstance.exit(1);
-      server.close();
+      phInstance.exit(1);
+      logger.debug('Phantomjs closed');
+      server.close(function(){
+        logger.debug('Server closed');
+      });
     }
 
     page.on('onConsoleMessage',function(msg, lineNum, sourceId) {
-      var result_split,error;
+      var result_split,report;
       if (msg.match(/\[HTMLCS\]/)){
         result_split = msg.split('|');
-        error = {
+        report = {
           type: result_split[0].split(" ")[1],
           principle: result_split[1],
           tag: result_split[2],
@@ -111,19 +129,27 @@ connect().use(serveStatic(program.root)).listen(program.port,function(){
           full_tag: result_split[5],
           full_text: msg
         };
-        errors[error.type].push(error);
+        errors[report.type].push(report);
       } else if(msg.match(/\[AXS\]/)){
         result_split = msg.split('|');
-        error = {
-          type: result_split[0].split(" ")[1].toUpperCase() ,
-          principle: result_split[1],
-          tag: '<' + result_split[2] + '>',
-          tag_id: result_split[3],
-          error: result_split[4],
-          full_tag: result_split[5],
-          full_text: msg
-        };
-        errors[error.type].push(error);
+        var type = result_split[0].split(" ")[1].toUpperCase();
+        if (type !== 'PASS'){
+          report = {
+            type: type,
+            principle: result_split[1],
+            tag: '<' + result_split[2] + '>',
+            tag_id: result_split[3],
+            error: result_split[4],
+            full_tag: result_split[5]
+          };
+        } else {
+          report = {
+            type:type,
+            principle: result_split[1],
+            error: result_split[4]
+          };
+        }
+        errors[report.type].push(report);
       }else {
         logger.debug(msg);
       }
@@ -131,8 +157,8 @@ connect().use(serveStatic(program.root)).listen(program.port,function(){
     page.on('onLoadFinished',function() {
       page._init = new Date();
       logger.debug('Cargando dependencias para evaluar la usabilidad');
-      page.injectJs('./HTML_CodeSniffer/build/HTMLCS.js');
-      page.injectJs('./vendor/axs_testing.js');
+      page.injectJs('./vendor/HTMLCS.js');
+      page.injectJs('./vendor/axs_testing.min.js');
       logger.debug('Injectando la espera de tiempo y a que los components esten ready');
       evaluate(page,function(timeout){
         document.addEventListener('WebComponentsReady', function(){
@@ -140,71 +166,100 @@ connect().use(serveStatic(program.root)).listen(program.port,function(){
             window.callPhantom({text:'Antes de llamar a las auditorias',type:'DEBUG'});
             window.HTMLCS_RUNNER.run('WCAG2AAA');
             var audit = axs.Audit.run();
-
-            window.callPhantom({text:'Enviando resultados de axs', type:'DEBUG'});
             audit.forEach(function(item){
               var result = "[AXS] ";
               if (item.result == 'FAIL') {
                 result += item.rule.severity; // TYPE
-                result += item.rule && item.rule.code ? '|' + item.rule.code + '.' + item.rule.name : '|'; // principle
+                result += item.rule && item.rule.code ? '|[' + item.rule.code + '.' + item.rule.name +']': '|'; // principle
                 result += item.elements.length > 0? '|' + item.elements[0].tagName : '|'; // tag
                 result += item.elements.length > 0 && item.elements[0].id? item.elements[0].id: '|'; //tag_id
                 result += item.rule && item.rule.heading? '|' + item.rule.heading : '|'; // error
                 if (item.elements.length > 0){
                   var outerHTML = item.elements[0].outerHTML;
-                  outerHTML = outerHTML.replace(/<!--[\s\S]*?-->/g,"");
-                  outerHTML = outerHTML.split('>');
-                  var list = outerHTML[0] + ">";
-                  list += outerHTML.length > 1 ? outerHTML[1] + '>':'';
-                  list += outerHTML.length > 2 ? outerHTML[2] + '>':'';
-                  var close = list.split('>').reverse();
-                  close.splice(0,1);
-                  close = close.join('>') + '>'
-                  close = close.replace(/</g,'</');
-                  list = list + close;
+                  var list = "";
+                  if (item.rule.name == 'lowContrastElements') {
+                    var splited = outerHTML.split('\n');
+                    list = splited.join('\n     ');
+                  } else {
+                    outerHTML = outerHTML.replace(/<!--[\s\S]*?-->/g,"");
+                    outerHTML = outerHTML.split('>');
+                    list = outerHTML[0] + ">";
+                    list += outerHTML.length > 1 ? outerHTML[1] + '>':'';
+                    list += outerHTML.length > 2 ? outerHTML[2] + '>':'';
+                    var close = list.split('>').reverse();
+                    close.splice(0,1);
+                    close = close.join('>') + '>';
+                    close = close.replace(/</g,'</');
+                    list = list + close;
+                  }
                   result += '|' + list;
                 }
                 console.log(result);
-                console.log(audit.length);
+              } else if (item.result == 'PASS'){
+                result += item.result;
+                result += item.elements.length > 0? '|' + item.elements[0].tagName : '|'; // tag
+                result += '[' + item.rule.code + '.' + item.rule.name +']';
+                result += '||';
+                result += '|' + item.rule.heading;
+                console.log(result);
               }
             });
-            window.callPhantom({text:'Devolviendo el control a phantom',type:'DEBUG'});
             window.callPhantom({type:'ACCESSIBILITY_AUDIT'});
+            window.callPhantom({type:'CLOSE'});
           },timeout);
         },false);
       },program.timeout, logger);
     });
     page.on('onCallback',function(msg) {
       function print(item){
-        console.log('\t',COLOR[item.type]);
-        console.log('\t\t',item.principle);
-        console.log('\t\t',item.tag, ' ', item.tag_id);
-        console.log('\t\t',item.error);
-        console.log('\t\t',item.full_tag,'\n');
+        if (item.type !== 'PASS' && item.type !== 'NA'){
+          console.log('\t',COLOR[item.type]);
+          console.log('\t\t',item.principle);
+          console.log('\t\t',item.tag, ' ', item.tag_id);
+          console.log('\t\t',item.error);
+          console.log('\t\t',item.full_tag,'\n');
+        } else if (program.verbose){
+          console.log('\t',COLOR[item.type]);
+          console.log('\t\t',item.principle);
+          console.log('\t\t',item.error);
+        }
       }
       switch (msg.type) {
         case 'ACCESSIBILITY_AUDIT':
         logger.debug('Tiempo ejecución: ', new Date() - page._init);
-        console.log('ACCESSIBILITY REPORT');
-        console.log('-----------------------------------------\n');
-        // Se tiene que recorrer msg.results
-        for (var type in errors){
-          if (errors.hasOwnProperty(type)){
-            errors[type].forEach(print);
+        if (!program.skip){
+          console.log('ACCESSIBILITY REPORT');
+          console.log('-----------------------------------------\n');
+          for (var type in errors){
+            if (errors.hasOwnProperty(type)){
+              errors[type].forEach(print);
+            }
           }
+          var report ="(" + _baseColor.error + errors.ERROR.length + '\x1b[0m/';
+          report+= _baseColor.warning + errors.WARNING.length + '\x1b[0m/';
+          report+= _baseColor.notice + errors.NOTICE.length + '\x1b[0m/';
+          report+= _baseColor.pass + errors.PASS.length + '\x1b[0m)';
+          console.log('FINAL REPORT' + report + '\n');
         }
-        var report ="(" + _baseColor.error + errors.ERROR.length + '\x1b[0m/';
-        report+= _baseColor.warning + errors.WARNING.length + '\x1b[0m/';
-        report+= _baseColor.notice + errors.NOTICE.length + '\x1b[0m)';
-        console.log('FINAL REPORT' + report);
-        endConection();
+        break;
+        case 'CLOSE':
+        if (program.output){
+          fs.writeFile(program.output,JSON.stringify(errors, null, 2),function(err){
+            if(err)logger.error('Trying to write output file',err);
+            logger.info('Generate report: ',program.output);
+            endConection();
+          });
+        } else {
+          endConection();
+        }
         break;
         default:
         logger.debug(msg.text);
+        break;
       }
-
     });
     logger.info('Open ', test_dir);
+
     return page.open(test_dir);
   });
 });
