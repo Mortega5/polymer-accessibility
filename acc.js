@@ -197,6 +197,9 @@ connect().use(serveStatic(program.root)).listen(program.port, function(){
             var audit = axs.Audit.run();
             audit.forEach(function(item){
               var result = "[AXS] ";
+              if (item.rule.severity.toUpperCase() == 'SEVERE'){
+                item.rule.severity = 'ERROR';
+              }
               if (item.result == 'FAIL') {
                 result += item.rule.severity; // TYPE
                 result += item.rule && item.rule.code ? '|' + item.rule.code + '.' + item.rule.name: '|'; // principle
