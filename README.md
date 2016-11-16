@@ -5,7 +5,7 @@ Web component accessibility evaluation tool. It use
 and [HTML_CodeSniffer](https://github.com/squizlabs/HTML_CodeSniffer).
 
 ## USAGE
-
+```pre
 Usage: acc [options] <test_file>
 
 Options:
@@ -22,3 +22,4 @@ Options:
   --config <conf_file     Configuration file
   --skip                  Does not print result on console
   --viewport              View port size
+```
