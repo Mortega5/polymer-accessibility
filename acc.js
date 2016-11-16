@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 /*
-  Copyright (c) 2016, Miguel Ortega Moreno <miguel.ortega.moreno5@gmail.com>
+Copyright (c) 2016, Miguel Ortega Moreno <miguel.ortega.moreno5@gmail.com>
 
-  Permission to use, copy, modify, and/or distribute this software for any purpose
-  with or without fee is hereby granted, provided that the above copyright notice
-  and this permission notice appear in all copies.
+Permission to use, copy, modify, and/or distribute this software for any purpose
+with or without fee is hereby granted, provided that the above copyright notice
+and this permission notice appear in all copies.
 
-  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-  REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
-  FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,INDIRECT,
-  OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,
-  DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,NEGLIGENCE OR OTHER TORTIOUS
-  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,INDIRECT,
+OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,
+DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,NEGLIGENCE OR OTHER TORTIOUS
+ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
 // DEPENDENCIES
@@ -30,7 +30,8 @@ loggerConsole.setLevel('INFO');
 // INTERNAL VAR
 var sitepage,
 phInstnace,
-test_url;
+test_url,
+failed=0;
 
 var _baseColor = {
   notice: '\x1b[1;34m',
@@ -61,11 +62,12 @@ program
 .option('-r --root <dir>','Directory root for the server')
 .option('-h --host <host>','Host direction')
 .option('-o --output <file>','Output file')
-.option('--verbose','Show passed test')
 .option('--https','Use HTTPS instance of HTTP')
 .option('--config <conf_file','Configuration file')
 .option ('--skip','Does not print result on console')
 .option('--viewport','View port size')
+.option('-l --level <level>', 'Output message level')
+.option('--wcag2 <wcag2_level>','WCAG2 level: A AA or AAA')
 .arguments('<test_file> ')
 .action(function(test){test_dir = test;})
 .parse(process.argv);
@@ -90,11 +92,18 @@ program.port = program.port || 8080; // default server port 8080
 program.protocol = program.https? 'https' : 'http';
 program.root = program.root || __dirname;
 program.root += program.root[program.root.length-1] == '/'? '':'/';
+
 program.timeout = program.timeout || 0;
 program.viewport = program.viewport || '1024x768';
 
+program.level = program.level? program.level.toUpperCase() : 'ERROR';
+program.level = ORDER[program.level]?program.level: 'ERROR';
+
+program.wcag2 = program.wcag2 && program.wcag2.match(/^([A]{1,3})$/)?program.wcag2.toUpperCase() : 'AA';
+
 program.viewport = program.viewport.split('x');
-program.viewport = {width:program.viewport[0],height:program.viewport[1]}
+program.viewport = {width:program.viewport[0],height:program.viewport[1]};
+
 // Change reference of test file to root.
 if (test_dir.indexOf(program.root) === 0){
   test_dir = test_dir.replace(program.root,'');
@@ -131,6 +140,7 @@ connect().use(serveStatic(program.root)).listen(program.port, function(){
       logger.debug('Phantomjs closed');
       server.close(function(){
         logger.debug('Server closed');
+        return failed >0?1:0;
       });
     }
     page.viewportSize = program.viewport;
@@ -175,14 +185,15 @@ connect().use(serveStatic(program.root)).listen(program.port, function(){
     page.on('onLoadFinished',function() {
       page._init = new Date();
       logger.debug('Cargando dependencias para evaluar la usabilidad');
-      page.injectJs('./vendor/HTMLCS.js');
-      page.injectJs('./vendor/axs_testing.min.js');
+      page.injectJs(__dirname + '/vendor/HTMLCS.js');
+      page.injectJs(__dirname + '/vendor/axs_testing.min.js');
       logger.debug('Injectando la espera de tiempo y a que los components esten ready');
-      evaluate(page,function(timeout){
+      evaluate(page,function(timeout,wcag2){
         document.addEventListener('WebComponentsReady', function(){
           window.setTimeout(function(){
             window.callPhantom({text:'Antes de llamar a las auditorias',type:'DEBUG'});
-            window.HTMLCS_RUNNER.run('WCAG2AAA');
+            window.callPhantom({text:'WCAG2' + wcag2, type:'DEBUG'});
+            window.HTMLCS_RUNNER.run('WCAG2' + wcag2);
             var audit = axs.Audit.run();
             audit.forEach(function(item){
               var result = "[AXS] ";
@@ -226,20 +237,23 @@ connect().use(serveStatic(program.root)).listen(program.port, function(){
             window.callPhantom({type:'CLOSE'});
           },timeout);
         },false);
-      },program.timeout, logger);
+      },program.timeout, program.wcag2);
     });
     page.on('onCallback',function(msg) {
       function print(item){
-        if (item.type !== 'PASS' && item.type !== 'NA'){
-          console.log('\t',COLOR[item.type]);
-          console.log('\t\t',item.principle);
-          console.log('\t\t',item.tag, ' ', item.tag_id);
-          console.log('\t\t',item.error);
-          console.log('\t\t',item.full_tag,'\n');
-        } else if (program.verbose){
-          console.log('\t',COLOR[item.type]);
-          console.log('\t\t',item.principle);
-          console.log('\t\t',item.error);
+        if (ORDER[item.type] <= ORDER[program.level]){
+          failed++;
+          if (item.type !== 'PASS'){
+            console.log('\t',COLOR[item.type]);
+            console.log('\t\t',item.principle);
+            console.log('\t\t',item.tag, ' ', item.tag_id);
+            console.log('\t\t',item.error);
+            console.log('\t\t',item.full_tag,'\n');
+          } else if (item.type ==='PASS'){
+            console.log('\t',COLOR[item.type]);
+            console.log('\t\t',item.principle);
+            console.log('\t\t',item.error);
+          }
         }
       }
       switch (msg.type) {
@@ -265,10 +279,10 @@ connect().use(serveStatic(program.root)).listen(program.port, function(){
           fs.writeFile(program.output,JSON.stringify(errors, null, 2),function(err){
             if(err)logger.error('Trying to write output file',err);
             logger.info('Generate report: ',program.output);
-            endConection();
+            endConection(failed);
           });
         } else {
-          endConection();
+          endConection(failed);
         }
         break;
         default:
