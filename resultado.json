@@ -1,0 +1,140 @@
+{
+  "ERROR": [
+    {
+      "type": "ERROR",
+      "principle": "[WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2]",
+      "tag": "html",
+      "tag_id": "",
+      "error": "The html element should have a lang or xml:lang attribute which describes the language of the document.",
+      "full_tag": "<html><head></head><body>...</body></html>",
+      "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
+    },
+    {
+      "type": "ERROR",
+      "principle": "[WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
+      "tag": "paper-icon-button",
+      "tag_id": "",
+      "error": "This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.",
+      "full_tag": "<paper-icon-button icon=\"search\" class=\"style-scope traffic-incidents x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>",
+      "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button||This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button icon=\"search\" class=\"style-scope traffic-incidents x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>"
+    },
+    {
+      "type": "ERROR",
+      "principle": "[WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputText.Name]",
+      "tag": "input",
+      "tag_id": "#searchBox",
+      "error": "This text input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.",
+      "full_tag": "<input id=\"searchBox\" placeholder=\"Search City\" class=\"style-scope traffic-incidents\"></input>",
+      "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputText.Name|input|#searchBox|This text input element does not have a name available to an accessibility API. Valid names are: label element, title attribute, aria-label attribute, aria-labelledby attribute.|<input id=\"searchBox\" placeholder=\"Search City\" class=\"style-scope traffic-incidents\"></input>"
+    },
+    {
+      "type": "ERROR",
+      "principle": "[WCAG2AA.Principle1.Guideline1_3.1_3_1.F68]",
+      "tag": "input",
+      "tag_id": "#searchBox",
+      "error": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
+      "full_tag": "<input id=\"searchBox\" placeholder=\"Search City\" class=\"style-scope traffic-incidents\"></input>",
+      "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle1.Guideline1_3.1_3_1.F68|input|#searchBox|This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.|<input id=\"searchBox\" placeholder=\"Search City\" class=\"style-scope traffic-incidents\"></input>"
+    }
+  ],
+  "NOTICE": [
+    {
+      "type": "NOTICE",
+      "principle": "[WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2]",
+      "tag": "title",
+      "tag_id": "",
+      "error": "Check that the title element describes the document.",
+      "full_tag": "<title>...</title>",
+      "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.2|title||Check that the title element describes the document.|<title>...</title>"
+    },
+    {
+      "type": "NOTICE",
+      "principle": "[WCAG2AA.Principle3.Guideline3_2.3_2_1.G107]",
+      "tag": "input",
+      "tag_id": "#searchBox",
+      "error": "Check that a change of context does not occur when this input field receives focus.",
+      "full_tag": "<input id=\"searchBox\" placeholder=\"Search City\" class=\"style-scope traffic-incidents\"></input>",
+      "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle3.Guideline3_2.3_2_1.G107|input|#searchBox|Check that a change of context does not occur when this input field receives focus.|<input id=\"searchBox\" placeholder=\"Search City\" class=\"style-scope traffic-incidents\"></input>"
+    }
+  ],
+  "WARNING": [
+    {
+      "type": "WARNING",
+      "principle": "AX_HTML_01.humanLangMissing",
+      "tag": "<HTML>",
+      "tag_id": "",
+      "error": "The web page should have the content's human language indicated in the markup",
+      "full_tag": "<html><head><style scope=\"traffic-incidents-data\"></style scope=\"traffic-incidents-data\"></head></html>"
+    },
+    {
+      "type": "WARNING",
+      "principle": "AX_COLOR_01.lowContrastElements",
+      "tag": "<DIV>",
+      "tag_id": "",
+      "error": "Text elements should have a reasonable contrast ratio",
+      "full_tag": "<div class=\"more_info style-scope traffic-incidents\">\n                   Termina: 28/04/2017  23:59\n                 </div>"
+    }
+  ],
+  "PASS": [
+    {
+      "type": "PASS",
+      "principle": "AX_ARIA_12.ariaOnReservedElement",
+      "error": "This element does not support ARIA roles, states and properties"
+    },
+    {
+      "type": "PASS",
+      "principle": "AX_ARIA_09.ariaRoleNotScoped",
+      "error": "Elements with ARIA roles must be in the correct scope"
+    },
+    {
+      "type": "PASS",
+      "principle": "AX_ARIA_11.badAriaAttribute",
+      "error": "This element has an invalid ARIA attribute"
+    },
+    {
+      "type": "PASS",
+      "principle": "AX_ARIA_04.badAriaAttributeValue",
+      "error": "ARIA state and property values must be valid"
+    },
+    {
+      "type": "PASS",
+      "principle": "AX_ARIA_01.badAriaRole",
+      "error": "Elements with ARIA roles must use a valid, non-abstract ARIA role"
+    },
+    {
+      "type": "PASS",
+      "principle": "AX_TEXT_01.controlsWithoutLabel",
+      "error": "Controls and media elements should have labels"
+    },
+    {
+      "type": "PASS",
+      "principle": "AX_FOCUS_01.focusableElementNotVisibleAndNotAriaHidden",
+      "error": "These elements are focusable but either invisible or obscured by another element"
+    },
+    {
+      "type": "PASS",
+      "principle": "AX_IMAGE_01.elementsWithMeaningfulBackgroundImage",
+      "error": "Meaningful images should not be used in element backgrounds"
+    },
+    {
+      "type": "PASS",
+      "principle": "AX_TITLE_01.pageWithoutTitle",
+      "error": "The web page should have a title that describes topic or purpose"
+    },
+    {
+      "type": "PASS",
+      "principle": "AX_ARIA_03.requiredAriaAttributeMissing",
+      "error": "Elements with ARIA roles must have all required attributes for that role"
+    },
+    {
+      "type": "PASS",
+      "principle": "AX_FOCUS_03.tabIndexGreaterThanZero",
+      "error": "Avoid positive integer values for tabIndex"
+    },
+    {
+      "type": "PASS",
+      "principle": "AX_ARIA_10.unsupportedAriaAttribute",
+      "error": "This element has an unsupported ARIA attribute"
+    }
+  ]
+}

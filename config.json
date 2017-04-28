@@ -1,8 +1,6 @@
 {
   "port": 8081,
   "timeout":3000,
-  "root": "bower_components",
-  "host": "0.0.0.0",
   "output":"resultado.json",
   "verbose":false
 }
