@@ -1,2 +1,2 @@
-bower_components/traffic-incidents/demo/index.html
-bower_components/traffic-incidents/demo/index.html
+bower_components/traffic-incidents-stable/demo/index.html
+bower_components/traffic-incidents-stable/demo/index.html

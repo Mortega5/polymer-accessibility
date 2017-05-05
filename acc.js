@@ -63,12 +63,14 @@ program
   .option('-h --host <host>', 'Host direction')
   .option('-o --output <file>', 'Output file')
   .option('--https', 'Use HTTPS instance of HTTP')
-  .option('--config <conf_file', 'Configuration file')
+  .option('--config <conf_file>', 'Configuration file')
   .option('--skip', 'Does not print result on console')
+  .option('--brief', "Brief report")
   .option('--viewport', 'View port size')
   .option('--log <level>', 'Output message level')
   .option('--wcag2 <wcag2_level>', 'WCAG2 level: A AA or AAA')
   .option('-l --list <list_components>', 'List of index')
+  .option('--skip_errors', "Skip console errors")
   .arguments('<test_file> ')
   .action(function (test) { test_dir = test; })
   .parse(process.argv);
@@ -79,20 +81,27 @@ if (program.config) {
     program[property] = program.config[property];
   }
 }
-if (typeof test_dir === 'undefined' && !program.list) {
+program.config = program.config || {};
+if (typeof test_dir === 'undefined' && !program.config.components) {
   program.help();
 }
 
-if (program.debug) {
-  logger.setLevel('DEBUG');
-  loggerConsole.setLevel('DEBUG');
+logger.setLevel(program.log || "INFO");
+loggerConsole.setLevel(program.log || "INFO");
+
+// truncate the output file
+if (program.output && fs.existsSync(program.ouput)) {
+  fs.truncateSync(program.output, 0);
+} else if (program.output) {
+  var fd = fs.openSync(program.output, 'w');
+  fs.closeSync(fd);
 }
 
 program.host = program.host || 'localhost'; //default host localhost
 program.port = program.port || 8080; // default server port 8080
 program.protocol = program.https ? 'https' : 'http';
-program.root = program.root || __dirname;
-program.root += program.root[program.root.length - 1] == '/' ? '' : '/';
+program.root = program.root || "";
+program.root += program.root[program.root.length - 1] == '/' || program.root == "" ? "" : '/';
 
 program.timeout = program.timeout || 0;
 program.viewport = program.viewport || '1024x768';
@@ -106,29 +115,23 @@ program.viewport = program.viewport.split('x');
 program.viewport = { width: program.viewport[0], height: program.viewport[1] };
 
 
-// Change reference of test file to root.
+// Phantom options
+var phantom_options = {'web-security':'no'};
 
 
 
-function analyze_file(file) {
+function analyze_file(file, component_name) {
   return new Promise(function (resolve, reject) {
-    connect().use(serveStatic(program.root)).listen(program.port, function () {
+    connect().use(serveStatic(program.root || __dirname)).listen(program.port, function () {
       logger.info('Server running on ' + program.port + '...');
       var server = this;
       var errors = { ERROR: [], NOTICE: [], WARNING: [], PASS: [] };
-      phantom.create().then(function (instance) {
+      phantom.create(['--web-security=no','--ssl-protocol=any','--ignore-ssl-errors=true']).then(function (instance) {
         phInstance = instance;
         return instance.createPage();
       }).then(function (page) {
         sitepage = page;
-        /*
-        * This function wraps WebPage.evaluate, and offers the possibility to pass
-        * parameters into the webpage function. The PhantomJS issue is here:
-        *
-        *   http://code.google.com/p/phantomjs/issues/detail?id=132
-        *
-        * This is from comment #43.
-        */
+
         function evaluate(page, func) {
           var args = [].slice.call(arguments, 2);
           var fn = "function() { return (" + func.toString() + ").apply(this, " + JSON.stringify(args) + ");}";
@@ -144,6 +147,8 @@ function analyze_file(file) {
           });
         }
         page.property('viewportSize', program.viewport);
+        
+      
         page.on('onConsoleMessage', function (msg, lineNum, sourceId) {
           var result_split, report;
           if (msg.match(/\[HTMLCS\]/)) {
@@ -182,9 +187,10 @@ function analyze_file(file) {
             logger.debug(msg);
           }
         });
+
         page.on('onLoadFinished', function () {
-          page.property('_init', new Date());
           logger.debug('Cargando dependencias para evaluar la usabilidad');
+          page.injectJs(__dirname + '/vendor/geolocation.js');
           page.injectJs(__dirname + '/vendor/HTMLCS.js');
           page.injectJs(__dirname + '/vendor/axs_testing.min.js');
           logger.debug('Injectando la espera de tiempo y a que los components esten ready');
@@ -261,8 +267,7 @@ function analyze_file(file) {
           }
           switch (msg.type) {
             case 'ACCESSIBILITY_AUDIT':
-              logger.debug('Tiempo ejecución: ', new Date() - page._init);
-              if (!program.skip) {
+              if (!program.skip && !program.brief) {
                 console.log('ACCESSIBILITY REPORT');
                 console.log('-----------------------------------------\n');
                 for (var type in errors) {
@@ -270,6 +275,8 @@ function analyze_file(file) {
                     errors[type].forEach(print);
                   }
                 }
+              }
+              if (!program.skip || program.brief) {
                 var report = "(" + _baseColor.error + errors.ERROR.length + '\x1b[0m/';
                 report += _baseColor.warning + errors.WARNING.length + '\x1b[0m/';
                 report += _baseColor.notice + errors.NOTICE.length + '\x1b[0m/';
@@ -279,19 +286,55 @@ function analyze_file(file) {
               break;
             case 'CLOSE':
               if (program.output) {
-                fs.writeFile(program.output, JSON.stringify(errors, null, 2), function (err) {
-                  if (err) logger.error('Trying to write output file', err);
-                  logger.info('Generate report: ', program.output);
-                  endConection(failed);
+
+                // check if output file is empty
+                var content_file = "";
+                logger.info("Saving results in " + program.output);
+                fs.readFile(program.output, 'utf8', function (err, content) {
+                  if (err) {
+                    logger.error("Error reading the output file", err);
+
+                  } else {
+                    content_file = content;
+                    if (content_file == "") {
+                      var data = {};
+                      data[component_name] = errors;
+                      fs.writeFile(program.output, JSON.stringify(data, null, 2), function (err) {
+                        if (err) logger.error('Trying to write output file', err);
+                        logger.info('Generated report in ', program.output);
+                        endConection(failed);
+                      });
+                    } else {
+                      content_file = JSON.parse(content_file);
+                      content_file[component_name] = errors;
+                      fs.writeFile(program.output, JSON.stringify(content_file, null, 2), function (err) {
+                        if (err) logger.error('Trying to write output file', err);
+                        logger.info('Generate report: ', program.output);
+                        endConection(failed);
+                      });
+                    }
+                  }
                 });
               } else {
                 endConection(failed);
               }
+
               break;
             default:
               logger.debug(msg.text);
               break;
           }
+        });
+        // Check console errors
+        page.on("onResourceError",function(request){
+          if (!program.skip_errors)
+          logger.error(request);
+        });
+
+        // Check page errors
+        page.on("onError", function (request) {
+          logger.error("Error cannot be opened\t" + request.status + ": " + request.statusText);
+          reject(request);
         });
         logger.info('Open ', file);
 
@@ -306,31 +349,33 @@ function analyze_file(file) {
 
 
 
-if (!program.list) {
+if (!program.config.components) {
   if (test_dir.indexOf(program.root) === 0) {
     test_dir = test_dir.replace(program.root, '');
   }
+  var component = test_dir;
   test_dir = program.protocol + '://' + program.host + ':' + program.port + '/' + test_dir;
-  analyze_file(test_dir).then(process.exit);
+  analyze_file(test_dir, component).then(process.exit);
 } else {
 
-  var components_index = fs.readFileSync(program.list, 'utf8').split('\n');
-
+  //var components_index = fs.readFileSync(program.list, 'utf8').split('\n');
+  var components_index = program.config.components;
   function execute_test(initial, end) {
     return new Promise(function (resolve, reject) {
       if (initial >= end) {
         resolve();
       } else {
         var dir = program.protocol + '://' + program.host + ':' + program.port + '/' + components_index[initial];
-        analyze_file(dir).then(function () {
-          execute_test(initial + 1, end).then(function () {
+        analyze_file(dir, components_index[initial]).then(function () {
+          execute_test(initial + 1, end).then(function (err) {
             resolve();
           });
+        }, function () {
+          resolve();
         })
       }
     })
   }
 
   execute_test(0, components_index.length);
-
 }

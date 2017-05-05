@@ -1,6 +1,20 @@
 {
   "port": 8081,
-  "timeout":3000,
-  "output":"resultado.json",
-  "verbose":false
+  "timeout": 3000,
+  "output": "resultado.json",
+  "verbose": false,
+  "skip_errors":true,
+  "brief":true,
+  "log":"ERROR",
+  "components": [
+    "traffic-incidents-stable/demo/index.html",
+    "twitter-timeline-stable/static/demo.html",
+    "facebook-wall-stable/demo.html",
+    "googleplus-timeline-stable/demo/index.html",
+    "pinterest-timeline-stable/demo/index.html",
+    "open-weather-stable/demo/index.html",
+    "finance-search-stable/demo/index.html",
+    "traffic-incidents-stable/demo/index.html"
+  ],
+  "root":"bower_components"
 }
