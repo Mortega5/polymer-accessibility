@@ -8,6 +8,7 @@
     "commander": "^2.9.0",
     "connect": "^3.5.0",
     "log4js": "^1.0.1",
+    "mixpanel": "^0.7.0",
     "phantom": "^3.0.3",
     "serve-static": "^1.11.1"
   },

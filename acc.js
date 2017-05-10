@@ -21,6 +21,7 @@ var connect = require('connect');
 var serveStatic = require('serve-static');
 var log4js = require('log4js');
 var fs = require('fs');
+var Mixpanel = require('mixpanel');
 
 logger = log4js.getLogger('ACC');
 loggerConsole = log4js.getLogger('CONSOLE');
@@ -71,6 +72,8 @@ program
   .option('--wcag2 <wcag2_level>', 'WCAG2 level: A AA or AAA')
   .option('-l --list <list_components>', 'List of index')
   .option('--skip_errors', "Skip console errors")
+  .option("--nomixpanel","No send data to mixpanel")
+  .option("--token","Mixpanel token")
   .arguments('<test_file> ')
   .action(function (test) { test_dir = test; })
   .parse(process.argv);
@@ -86,6 +89,12 @@ if (typeof test_dir === 'undefined' && !program.config.components) {
   program.help();
 }
 
+// Init mixpanel
+if ((program.config && program.config.mixpanel_token) || program.mixpanel_token){
+  var mixpanel_usability = Mixpanel.init(program.config.mixpanel_token);
+}
+
+// Set log level
 logger.setLevel(program.log || "INFO");
 loggerConsole.setLevel(program.log || "INFO");
 
@@ -118,7 +127,23 @@ program.viewport = { width: program.viewport[0], height: program.viewport[1] };
 // Phantom options
 var phantom_options = {'web-security':'no'};
 
-
+function sendToMixpanel(errors, component){
+  if (!mixpanel_usability){
+    logger.error("Cannot be sent to mixpanel. Mixpanel token is missing");
+    return -1;
+  }
+    var data = {
+      errors: errors.ERROR.length,
+      warning: errors.WARNING.length,
+      notice: errors.NOTICE.length,
+      pass: errors.PASS.length
+    }
+    mixpanel_usability.track(component, data,function(err){
+      if (err){
+        logger.error("Error sending to mixpanel\n",err);
+      }
+    });
+}
 
 function analyze_file(file, component_name) {
   return new Promise(function (resolve, reject) {
@@ -281,7 +306,10 @@ function analyze_file(file, component_name) {
                 report += _baseColor.warning + errors.WARNING.length + '\x1b[0m/';
                 report += _baseColor.notice + errors.NOTICE.length + '\x1b[0m/';
                 report += _baseColor.pass + errors.PASS.length + '\x1b[0m)';
-                console.log('FINAL REPORT' + report + '\n');
+                console.log(component_name,'\n\tFINAL REPORT' + report + '\n');
+                if(!program.nomixpanel){
+                  sendToMixpanel(errors, component_name);
+                }
               }
               break;
             case 'CLOSE':

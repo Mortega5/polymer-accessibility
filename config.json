@@ -8,13 +8,22 @@
   "log":"ERROR",
   "components": [
     "traffic-incidents-stable/demo/index.html",
+    "traffic-incidents-usability/demo/index.html",
     "twitter-timeline-stable/static/demo.html",
+    "twitter-timeline-usability/static/demo.html",
     "facebook-wall-stable/demo.html",
+    "facebook-wall-usability/demo.html",
     "googleplus-timeline-stable/demo/index.html",
+    "googleplus-timeline-usability/demo/index.html",
     "pinterest-timeline-stable/demo/index.html",
+    "pinterest-timeline-usability/demo/index.html",
     "open-weather-stable/demo/index.html",
+    "open-weather-usability/demo/index.html",
     "finance-search-stable/demo/index.html",
-    "traffic-incidents-stable/demo/index.html"
+    "finance-search-usability/demo/index.html",
+    "traffic-incidents-stable/demo/index.html",
+    "traffic-incidents-usability/demo/index.html"
   ],
-  "root":"bower_components"
+  "root":"bower_components",
+  "mixpanel_token":"54f3da68e465c086568d0358e393ba5c"
 }
