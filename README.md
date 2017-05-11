@@ -29,6 +29,25 @@ Options:
   --skip_errors                Skip console errors
 
 ```
+## Config file optios
+
+| Parametro        | Descripcion                               | Default   |
+|:----------------:|-------------------------------------------|----------:|
+| *port*           | Server port                               | 8080      |
+| *timeout*        | Delay before to execute test              | 0         |
+| *root*           | Root folder where server will be deployed | .         |
+| *host*           | Server host                               | localhost |
+| *output*         | Output file where results will be stored  |           |
+| *verbose*        | Show all the output information           | true      |
+| *brief*          | Only display test results                 | false     |
+| *wcag2*          | Enable/disable wcag2 test                 | true      |
+| *wcag2_level*    | Set wcag2 test level (A, AA or AAA)       | AA        |
+| *a11y*           | Enable/disable a11y test                  | true      |
+| *skip_errors*    | HTML errors will not displayed            | false     |
+| *log*            | Set log level (error,info, debug)         | info      |
+| *components*     | List of components that will be  tested   |           |
+| *mixpanel_token* | Send data to mixpanel using this token    |           |
+| *nomixpanel*     | Avoid send data to mixpanel               | false     |
 
 ### Example of config file
 
@@ -36,21 +55,18 @@ Options:
 {
   "port": 8081,
   "timeout": 3000,
-  "output": "output.json",
+  "output": "resultado.json",
   "verbose": false,
   "skip_errors":true,
+  "wcag2":false,
+  "a11y":true,
   "brief":true,
-  "log":"ERROR",
-  "components": [ // List of components that will be analyzed
-    "traffic-incidents-stable/demo/index.html",
-    "twitter-timeline-stable/static/demo.html",
-    "facebook-wall-stable/demo.html",
-    "googleplus-timeline-stable/demo/index.html",
-    "pinterest-timeline-stable/demo/index.html",
-    "open-weather-stable/demo/index.html",
-    "finance-search-stable/demo/index.html",
+  "nomixpanel":true,
+  "log":"DEBUG",
+  "components": [
     "traffic-incidents-stable/demo/index.html"
   ],
-  "root":"bower_components"
+  "root":"bower_components",
+  "mixpanel_token":"5545dfs25482dhwh324s"
 }
 ```

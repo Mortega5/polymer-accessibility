@@ -118,11 +118,15 @@ program.viewport = program.viewport || '1024x768';
 program.level = program.level ? program.level.toUpperCase() : 'ERROR';
 program.level = ORDER[program.level] ? program.level : 'ERROR';
 
-program.wcag2 = program.wcag2 && program.wcag2.match(/^([A]{1,3})$/) ? program.wcag2.toUpperCase() : 'AA';
+program.wcag2_level = program.wcag2_level && program.wcag2_level.match(/^([A]{1,3})$/) ? program.wcag2_level.toUpperCase() : 'AA';
 
 program.viewport = program.viewport.split('x');
 program.viewport = { width: program.viewport[0], height: program.viewport[1] };
 
+
+// Default test
+program.wcag2 = program.wcag2 == undefined ? true:program.wcag2;
+program.a11y = program.a11y == undefined ? true:program.a11y;
 
 // Phantom options
 var phantom_options = {'web-security':'no'};
@@ -216,62 +220,69 @@ function analyze_file(file, component_name) {
         page.on('onLoadFinished', function () {
           logger.debug('Cargando dependencias para evaluar la usabilidad');
           page.injectJs(__dirname + '/vendor/geolocation.js');
-          page.injectJs(__dirname + '/vendor/HTMLCS.js');
-          page.injectJs(__dirname + '/vendor/axs_testing.min.js');
+          if (program.wcag2)  page.injectJs(__dirname + '/vendor/HTMLCS.js');
+          if (program.a11y) page.injectJs(__dirname + '/vendor/axs_testing.min.js');
           logger.debug('Injectando la espera de tiempo y a que los components esten ready');
-          evaluate(page, function (timeout, wcag2) {
+          evaluate(page, function (timeout, wcag2, config) {
             document.addEventListener('WebComponentsReady', function () {
               window.setTimeout(function () {
                 window.callPhantom({ text: 'Antes de llamar a las auditorias', type: 'DEBUG' });
-                window.callPhantom({ text: 'WCAG2' + wcag2, type: 'DEBUG' });
-                window.HTMLCS_RUNNER.run('WCAG2' + wcag2);
-                var audit = axs.Audit.run();
-                audit.forEach(function (item) {
-                  var result = "[AXS] ";
-                  if (item.rule.severity.toUpperCase() == 'SEVERE') {
-                    item.rule.severity = 'ERROR';
-                  }
-                  if (item.result == 'FAIL') {
-                    result += item.rule.severity; // TYPE
-                    result += item.rule && item.rule.code ? '|' + item.rule.code + '.' + item.rule.name : '|'; // principle
-                    result += item.elements.length > 0 ? '|' + item.elements[0].tagName : '|'; // tag
-                    result += item.elements.length > 0 && item.elements[0].id ? item.elements[0].id : '|'; //tag_id
-                    result += item.rule && item.rule.heading ? '|' + item.rule.heading : '|'; // error
-                    if (item.elements.length > 0) {
-                      var outerHTML = item.elements[0].outerHTML;
-                      var list = "";
-                      if (item.rule.name == 'lowContrastElements') {
-                        var splited = outerHTML.split('\n');
-                        list = splited.join('\n     ');
-                      } else {
-                        outerHTML = outerHTML.replace(/<!--[\s\S]*?-->/g, "");
-                        outerHTML = outerHTML.split('>');
-                        list = outerHTML[0] + ">";
-                        list += outerHTML.length > 1 ? outerHTML[1] + '>' : '';
-                        list += outerHTML.length > 2 ? outerHTML[2] + '>' : '';
-                        var close = list.split('>').reverse();
-                        close.splice(0, 1);
-                        close = close.join('>') + '>';
-                        close = close.replace(/</g, '</');
-                        list = list + close;
-                      }
-                      result += '|' + list;
+                // check if wcag2 is disable
+                if (config.wcag2){
+                  window.callPhantom({ text: 'WCAG2' + wcag2, type: 'DEBUG' });
+                  window.HTMLCS_RUNNER.run('WCAG2' + wcag2);
+                }
+                // Check if a11y is disabled
+                if (config.a11y){
+                  window.callPhantom({text:"A11Y test", type:"DEBUG"});
+                  var audit = axs.Audit.run();
+                  audit.forEach(function (item) {
+                    var result = "[AXS] ";
+                    if (item.rule.severity.toUpperCase() == 'SEVERE') {
+                      item.rule.severity = 'ERROR';
                     }
-                    console.log(result);
-                  } else if (item.result == 'PASS') {
-                    result += item.result;
-                    result += item.elements.length > 0 ? '|' + item.elements[0].tagName : '|'; // tag
-                    result += item.rule.code + '.' + item.rule.name;
-                    result += '||';
-                    result += '|' + item.rule.heading;
-                    console.log(result);
-                  }
-                });
+                    if (item.result == 'FAIL') {
+                      result += item.rule.severity; // TYPE
+                      result += item.rule && item.rule.code ? '|' + item.rule.code + '.' + item.rule.name : '|'; // principle
+                      result += item.elements.length > 0 ? '|' + item.elements[0].tagName : '|'; // tag
+                      result += item.elements.length > 0 && item.elements[0].id ? item.elements[0].id : '|'; //tag_id
+                      result += item.rule && item.rule.heading ? '|' + item.rule.heading : '|'; // error
+                      if (item.elements.length > 0) {
+                        var outerHTML = item.elements[0].outerHTML;
+                        var list = "";
+                        if (item.rule.name == 'lowContrastElements') {
+                          var splited = outerHTML.split('\n');
+                          list = splited.join('\n     ');
+                        } else {
+                          outerHTML = outerHTML.replace(/<!--[\s\S]*?-->/g, "");
+                          outerHTML = outerHTML.split('>');
+                          list = outerHTML[0] + ">";
+                          list += outerHTML.length > 1 ? outerHTML[1] + '>' : '';
+                          list += outerHTML.length > 2 ? outerHTML[2] + '>' : '';
+                          var close = list.split('>').reverse();
+                          close.splice(0, 1);
+                          close = close.join('>') + '>';
+                          close = close.replace(/</g, '</');
+                          list = list + close;
+                        }
+                        result += '|' + list;
+                      }
+                      console.log(result);
+                    } else if (item.result == 'PASS') {
+                      result += item.result;
+                      result += item.elements.length > 0 ? '|' + item.elements[0].tagName : '|'; // tag
+                      result += item.rule.code + '.' + item.rule.name;
+                      result += '||';
+                      result += '|' + item.rule.heading;
+                      console.log(result);
+                    }
+                  });
+                }
                 window.callPhantom({ type: 'ACCESSIBILITY_AUDIT' });
                 window.callPhantom({ type: 'CLOSE' });
               }, timeout);
             }, false);
-          }, program.timeout, program.wcag2);
+          }, program.timeout, program.wcag2_level, program);
         });
         page.on('onCallback', function (msg) {
           function print(item) {
