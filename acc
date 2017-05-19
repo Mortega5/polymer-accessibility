@@ -23,6 +23,17 @@ var log4js = require('log4js');
 var fs = require('fs');
 var Mixpanel = require('mixpanel');
 
+var WCAG2A_RULES = require('./wcag_norms/WCAG2A.js');
+var WCAG2AA_RULES = require('./wcag_norms/WCAG2AA.js');
+var WCAG2AAA_RULES = require('./wcag_norms/WCAG2AAA.js');
+
+var WCAG2A_TOTAL = 26;
+var WCAG2AA_TOTAL = 40;
+var WCAG2AAA_TOTAL = 54;
+var A11Y_TOTAL = 29;
+var EXP_ID; 
+
+
 logger = log4js.getLogger('ACC');
 loggerConsole = log4js.getLogger('CONSOLE');
 logger.setLevel('INFO');
@@ -57,11 +68,12 @@ var ORDER = {
 // Program options
 program
   .version('0.1.0')
+  .description("Accesibility test for web components. It use WCAG2 and A11Y")
   .usage('[options] <test_file>')
   .option('-p --port <port>', 'Server port. Default 8080', parseInt)
-  .option('-t --timeout <timeout>', 'Waiting time at component finish', parseInt)
+  .option('-t --timeout <timeout>', 'Waiting time before execute', parseInt)
   .option('-r --root <dir>', 'Directory root for the server')
-  .option('-h --host <host>', 'Host direction')
+  .option('-h --host <host>', 'Host direction. Default 0.0.0.0')
   .option('-o --output <file>', 'Output file')
   .option('--https', 'Use HTTPS instance of HTTP')
   .option('--config <conf_file>', 'Configuration file')
@@ -126,17 +138,72 @@ var phantom_options = { 'web-security': 'no' };
 
 
 // Default test wcag2 and a11y options
-program.wcag2_level = program.wcag2_level && program.wcag2_level.match(/^([A]{1,3})$/) ? program.wcag2_level.toUpperCase() : 'AA';
+program.wcag2_level = program.wcag2_level && program.wcag2_level.match(/^([A]{1,3})$/) ? program.wcag2_level.toUpperCase() : 'AAA';
 program.wcag2 = program.wcag2 == undefined ? true : program.wcag2;
 program.a11y = program.a11y == undefined ? true : program.a11y;
 
 
 // get mapping file
 var MAPPING = JSON.parse(fs.readFileSync('mapping.json','utf8'));
+var EQUIVALENTS_NORM = Object.keys(MAPPING).length;
+
+// get exp id
+EXP_ID = program.config.exp_id || new Date().getTime();
+
+function checkNorms(errors){
+  var WCAG2A = true;
+  var WCAG2AA = true;
+  var WCAG2AAA = true;
+  var A11Y = true;
+  errors.ERROR.forEach(function(element){
+    var principle = element.norm.split('.').slice(1).join('.');
+    if (WCAG2A_RULES.indexOf(principle) != -1) WCAG2AAA = false;
+    if (WCAG2AA_RULES.indexOf(principle) != -1)  WCAG2AA = false;
+    if (WCAG2AAA_RULES.indexOf(principle) != -1)  WCAG2A = false;
+    if(element.norm.indexOf('AX') != -1 )       A11Y = false;
+  });
+  
+  return {WCAG2A:WCAG2A,WCAG2AA:WCAG2AA,WCAG2AAA:WCAG2AAA,A11Y:A11Y};
+}
+
+function repetedInList(list,element){
+  var repeted = false;
+  var wcag;
+  var ax;
+  if (element.norm.indexOf('AX') != -1) { ax = translateWCAG2Ax(element.norm); }
+  else { wcag = translateWCAG2Ax(element.norm); }
+
+  list.forEach(function(norm){
+    if (norm.norm == element.norm || 
+       ( wcag && norm.norm.indexOf(wcag) != -1) ||
+       (ax && norm.norm.indexOf(ax) != -1) ) {
+      repeted = true;
+    }
+  });
+
+  return repeted;
+}
+
+function remoteRepetedByLevel(errors) {
+
+    errors.WARNING = errors.WARNING.filter(function(element){
+      return !repetedInList(errors.ERROR, element);
+    });
+
+    errors.NOTICE = errors.NOTICE.filter(function(element){
+      return !repetedInList(errors.ERROR, element) && !repetedInList(errors.WARNING, element);
+    });
+
+    errors.PASS = errors.PASS.filter(function(element){
+      return !repetedInList(errors.ERROR, element) && !repetedInList(errors.WARNING, element) && !repetedInList(errors.NOTICE, element);
+    });
+    
+    return errors;
+}
 
 function translateAx2WCAG(element){
   logger.debug("Se va a transformar " + element + " en " + MAPPING[element.toUpperCase()]);
-  return MAPPING[element.toUpperCase()]
+  return MAPPING[element.toUpperCase()];
 }
 
 function translateWCAG2Ax(element){
@@ -150,6 +217,7 @@ function translateWCAG2Ax(element){
   logger.debug("Se va a transformar " + element + " en " + ax_norm);
   return ax_norm
 }
+
 
 /**
  * Remove repeted errors without overwrite the list
@@ -204,15 +272,24 @@ function sendToMixpanel(list_errors, component) {
   var errors = list_errors.ERROR.length + Math.floor(warning / program.config.errorsByWarning);
   var pass = list_errors.PASS.length;
 
-  var usability_value = (pass) / (errors + pass);
+  var total = WCAG2AAA_TOTAL + A11Y_TOTAL - EQUIVALENTS_NORM;
+  var usability_value = (total - errors) / total;
+
+  var checkedNorms = checkNorms(list_errors);
 
   var data = {
     errors: list_errors.ERROR.length,
     warning: list_errors.WARNING.length,
     notice: list_errors.NOTICE.length,
     pass: list_errors.PASS.length,
-    usability_value: usability_value
-  }
+    usability_value: usability_value,
+    passWCAG2A: checkedNorms.WCAG2A,
+    passWCAG2AA: checkedNorms.WCAG2AA,
+    passWCAG2AAA: checkedNorms.WCAG2AAA,
+    passA11Y: checkedNorms.A11Y,
+    exp_id: EXP_ID
+  };
+
   mixpanel_usability.track(component, data, function (err) {
     if (err) {
       logger.error("Error sending to mixpanel\n", err);
@@ -404,6 +481,7 @@ function analyze_file(file, component_name) {
               errors.WARNING = removeRepeted(errors.WARNING);
               errors.NOTICE = removeRepeted(errors.NOTICE);
               errors.PASS = removeRepeted(errors.PASS);
+              errors = remoteRepetedByLevel(errors);
               if (!program.skip && !program.brief) {
                 console.log('ACCESSIBILITY REPORT');
                 console.log('-----------------------------------------\n');

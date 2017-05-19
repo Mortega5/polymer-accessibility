@@ -1,17 +1,4 @@
 {
-  "AX_ARIA_01": "",
-  "AX_ARIA_02": "",
-  "AX_ARIA_03": "",
-  "AX_ARIA_04": "",
-  "AX_ARIA_05": "",
-  "AX_ARIA_06": "",
-  "AX_ARIA_07": "",
-  "AX_ARIA_08": "",
-  "AX_ARIA_09": "",
-  "AX_ARIA_10": "",
-  "AX_ARIA_11": "",
-  "AX_ARIA_12": "",
-  "AX_ARIA_13": "",
   "AX_AUDIO_01": "1_4_2",
   "AX_HTML_01": "3_1_1.H57.2",
   "AX_HTML_02": "4_1_1.H93",
@@ -22,10 +9,7 @@
   "AX_TITLE_01": "2_4_2",
   "AX_IMAGE_01": "1_1_1.F3",
   "AX_FOCUS_01": "2_4_7",
-  "AX_FOCUS_02": "",
-  "AX_FOCUS_03": "",
   "AX_COLOR_01": "1_4_3",
   "AX_VIDEO_01": "1_2_1",
   "AX_TABLE_01": "1_3_1.H43",
-  "AX_TOOLTIP_01": "WAI-ARIA.2.23"
 }

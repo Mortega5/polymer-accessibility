@@ -3,58 +3,78 @@
     "ERROR": [
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2]",
-        "norm": "WCAG2AA.Principle3.Guideline3_1.3_1_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_1.3_1_1",
         "tag": "html",
         "tag_id": "",
         "error": "The html element should have a lang or xml:lang attribute which describes the language of the document.",
         "full_tag": "<html><head></head><body>...</body></html>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
       },
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
-        "norm": "WCAG2AA.Principle4.Guideline4_1.4_1_2",
+        "principle": "[WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
+        "norm": "WCAG2AAA.Principle4.Guideline4_1.4_1_2",
         "tag": "paper-icon-button",
         "tag_id": "",
         "error": "This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.",
         "full_tag": "<paper-icon-button class=\"refresh_button style-scope twitter-timeline x-scope paper-icon-button-0\" icon=\"refresh\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\" title=\"Refrescar\">...</paper-icon-button>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button||This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button class=\"refresh_button style-scope twitter-timeline x-scope paper-icon-button-0\" icon=\"refresh\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\" title=\"Refrescar\">...</paper-icon-button>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button||This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button class=\"refresh_button style-scope twitter-timeline x-scope paper-icon-button-0\" icon=\"refresh\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\" title=\"Refrescar\">...</paper-icon-button>"
       },
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.H37]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_1.1_1_1.H37]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_1.1_1_1",
         "tag": "img",
         "tag_id": "",
         "error": "Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.",
         "full_tag": "<img draggable=\"false\" src=\"https://pbs.twimg.com/profile_images/700659964486922241/ixw8dU55_normal.png\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\">",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle1.Guideline1_1.1_1_1.H37|img||Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.|<img draggable=\"false\" src=\"https://pbs.twimg.com/profile_images/700659964486922241/ixw8dU55_normal.png\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\">"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle1.Guideline1_1.1_1_1.H37|img||Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.|<img draggable=\"false\" src=\"https://pbs.twimg.com/profile_images/700659964486922241/ixw8dU55_normal.png\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\">"
+      },
+      {
+        "type": "ERROR",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.Fail]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_4.1_4_6",
+        "tag": "span",
+        "tag_id": "",
+        "error": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 7:1, but text in this element has a contrast ratio of 2.94:1. Recommendation: change text colour to #4a5b68.",
+        "full_tag": "<span class=\"username style-scope twitter-timeline\">...</span>",
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.Fail|span||This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 7:1, but text in this element has a contrast ratio of 2.94:1. Recommendation: change text colour to #4a5b68.|<span class=\"username style-scope twitter-timeline\">...</span>"
       }
     ],
     "NOTICE": [
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.G73,G74]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
-        "tag": "img",
+        "principle": "[WCAG2AAA.Principle2.Guideline2_4.2_4_9.H30]",
+        "norm": "WCAG2AAA.Principle2.Guideline2_4.2_4_9",
+        "tag": "a",
         "tag_id": "",
-        "error": "If this image cannot be fully described in a short text alternative, ensure a long text alternative is also available, such as in the body text or through a link.",
-        "full_tag": "<img draggable=\"false\" src=\"https://pbs.twimg.com/profile_images/700659964486922241/ixw8dU55_normal.png\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\">",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle1.Guideline1_1.1_1_1.G73,G74|img||If this image cannot be fully described in a short text alternative, ensure a long text alternative is also available, such as in the body text or through a link.|<img draggable=\"false\" src=\"https://pbs.twimg.com/profile_images/700659964486922241/ixw8dU55_normal.png\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\">"
+        "error": "Check that text of the link describes the purpose of the link.",
+        "full_tag": "<a class=\"nounderline style-scope twitter-timeline\" target=\"_blank\" href=\"https://twitter.com/geeks_academy\">...</a>",
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle2.Guideline2_4.2_4_9.H30|a||Check that text of the link describes the purpose of the link.|<a class=\"nounderline style-scope twitter-timeline\" target=\"_blank\" href=\"https://twitter.com/geeks_academy\">...</a>"
       },
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle3.Guideline3_2.3_2_1.G107]",
-        "norm": "WCAG2AA.Principle3.Guideline3_2.3_2_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_1",
         "tag": "button",
         "tag_id": "",
         "error": "Check that a change of context does not occur when this input field receives focus.",
         "full_tag": "<button name=\"es\">...</button>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle3.Guideline3_2.3_2_1.G107|button||Check that a change of context does not occur when this input field receives focus.|<button name=\"es\">...</button>"
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107|button||Check that a change of context does not occur when this input field receives focus.|<button name=\"es\">...</button>"
       }
     ],
     "WARNING": [
+      {
+        "type": "WARNING",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_5.H83.3]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_5",
+        "tag": "a",
+        "tag_id": "",
+        "error": "Check that this link's link text contains information indicating that the link will open in a new window.",
+        "full_tag": "<a class=\"nounderline style-scope twitter-timeline\" target=\"_blank\" href=\"https://twitter.com/geeks_academy\">...</a>",
+        "full_text": "[HTMLCS] WARNING|WCAG2AAA.Principle3.Guideline3_2.3_2_5.H83.3|a||Check that this link's link text contains information indicating that the link will open in a new window.|<a class=\"nounderline style-scope twitter-timeline\" target=\"_blank\" href=\"https://twitter.com/geeks_academy\">...</a>"
+      },
       {
         "type": "WARNING",
         "norm": "AX_FOCUS_01",
@@ -162,38 +182,68 @@
     "ERROR": [
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
-        "norm": "WCAG2AA.Principle4.Guideline4_1.4_1_2",
+        "principle": "[WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
+        "norm": "WCAG2AAA.Principle4.Guideline4_1.4_1_2",
         "tag": "paper-icon-button",
         "tag_id": "",
         "error": "This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.",
         "full_tag": "<paper-icon-button class=\"refresh_button style-scope twitter-timeline x-scope paper-icon-button-0\" icon=\"refresh\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\" title=\"Refrescar\">...</paper-icon-button>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button||This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button class=\"refresh_button style-scope twitter-timeline x-scope paper-icon-button-0\" icon=\"refresh\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\" title=\"Refrescar\">...</paper-icon-button>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button||This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button class=\"refresh_button style-scope twitter-timeline x-scope paper-icon-button-0\" icon=\"refresh\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\" title=\"Refrescar\">...</paper-icon-button>"
+      },
+      {
+        "type": "ERROR",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.Fail]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_4.1_4_6",
+        "tag": "span",
+        "tag_id": "",
+        "error": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 7:1, but text in this element has a contrast ratio of 4.56:1. Recommendation: change text colour to #4a5b68.",
+        "full_tag": "<span class=\"username style-scope twitter-timeline\">...</span>",
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.Fail|span||This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 7:1, but text in this element has a contrast ratio of 4.56:1. Recommendation: change text colour to #4a5b68.|<span class=\"username style-scope twitter-timeline\">...</span>"
       }
     ],
     "NOTICE": [
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.G94.Image]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_1.1_1_1.G94.Image]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_1.1_1_1",
         "tag": "img",
         "tag_id": "",
         "error": "Ensure that the img element's alt text serves the same purpose and presents the same information as the image.",
         "full_tag": "<img alt=\"user picture\" class=\"imgEvent style-scope twitter-timeline\" src=\"https://pbs.twimg.com/profile_images/700659964486922241/ixw8dU55_normal.png\">",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle1.Guideline1_1.1_1_1.G94.Image|img||Ensure that the img element's alt text serves the same purpose and presents the same information as the image.|<img alt=\"user picture\" class=\"imgEvent style-scope twitter-timeline\" src=\"https://pbs.twimg.com/profile_images/700659964486922241/ixw8dU55_normal.png\">"
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle1.Guideline1_1.1_1_1.G94.Image|img||Ensure that the img element's alt text serves the same purpose and presents the same information as the image.|<img alt=\"user picture\" class=\"imgEvent style-scope twitter-timeline\" src=\"https://pbs.twimg.com/profile_images/700659964486922241/ixw8dU55_normal.png\">"
       },
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle3.Guideline3_2.3_2_1.G107]",
-        "norm": "WCAG2AA.Principle3.Guideline3_2.3_2_1",
+        "principle": "[WCAG2AAA.Principle2.Guideline2_4.2_4_9.H30]",
+        "norm": "WCAG2AAA.Principle2.Guideline2_4.2_4_9",
+        "tag": "a",
+        "tag_id": "",
+        "error": "Check that text of the link describes the purpose of the link.",
+        "full_tag": "<a class=\"nounderline style-scope twitter-timeline\" target=\"_blank\" href=\"https://twitter.com/geeks_academy\">...</a>",
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle2.Guideline2_4.2_4_9.H30|a||Check that text of the link describes the purpose of the link.|<a class=\"nounderline style-scope twitter-timeline\" target=\"_blank\" href=\"https://twitter.com/geeks_academy\">...</a>"
+      },
+      {
+        "type": "NOTICE",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_1",
         "tag": "button",
         "tag_id": "",
         "error": "Check that a change of context does not occur when this input field receives focus.",
         "full_tag": "<button name=\"es\">...</button>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle3.Guideline3_2.3_2_1.G107|button||Check that a change of context does not occur when this input field receives focus.|<button name=\"es\">...</button>"
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107|button||Check that a change of context does not occur when this input field receives focus.|<button name=\"es\">...</button>"
       }
     ],
     "WARNING": [
+      {
+        "type": "WARNING",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_5.H83.3]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_5",
+        "tag": "a",
+        "tag_id": "",
+        "error": "Check that this link's link text contains information indicating that the link will open in a new window.",
+        "full_tag": "<a class=\"nounderline style-scope twitter-timeline\" target=\"_blank\" href=\"https://twitter.com/geeks_academy\">...</a>",
+        "full_text": "[HTMLCS] WARNING|WCAG2AAA.Principle3.Guideline3_2.3_2_5.H83.3|a||Check that this link's link text contains information indicating that the link will open in a new window.|<a class=\"nounderline style-scope twitter-timeline\" target=\"_blank\" href=\"https://twitter.com/geeks_academy\">...</a>"
+      },
       {
         "type": "WARNING",
         "norm": "AX_FOCUS_01",
@@ -298,55 +348,55 @@
     "ERROR": [
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2]",
-        "norm": "WCAG2AA.Principle3.Guideline3_1.3_1_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_1.3_1_1",
         "tag": "html",
         "tag_id": "",
         "error": "The html element should have a lang or xml:lang attribute which describes the language of the document.",
         "full_tag": "<html><head></head><body>...</body></html>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
       },
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
-        "norm": "WCAG2AA.Principle4.Guideline4_1.4_1_2",
+        "principle": "[WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
+        "norm": "WCAG2AAA.Principle4.Guideline4_1.4_1_2",
         "tag": "paper-icon-button",
         "tag_id": "#search",
         "error": "This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.",
         "full_tag": "<paper-icon-button icon=\"search\" id=\"search\" class=\"style-scope traffic-incidents x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button|#search|This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button icon=\"search\" id=\"search\" class=\"style-scope traffic-incidents x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button|#search|This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button icon=\"search\" id=\"search\" class=\"style-scope traffic-incidents x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>"
       },
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle1.Guideline1_3.1_3_1.F68]",
-        "norm": "WCAG2AA.Principle1.Guideline1_3.1_3_1",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_3.1_3_1.F68]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_3.1_3_1",
         "tag": "input",
         "tag_id": "#searchBox",
         "error": "This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.",
         "full_tag": "<input id=\"searchBox\" placeholder=\"Buscar una ciudad\" class=\"style-scope traffic-incidents\"></input>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle1.Guideline1_3.1_3_1.F68|input|#searchBox|This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.|<input id=\"searchBox\" placeholder=\"Buscar una ciudad\" class=\"style-scope traffic-incidents\"></input>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle1.Guideline1_3.1_3_1.F68|input|#searchBox|This form field should be labelled in some way. Use the label element (either with a \"for\" attribute or wrapped around the form field), or \"title\", \"aria-label\" or \"aria-labelledby\" attributes as appropriate.|<input id=\"searchBox\" placeholder=\"Buscar una ciudad\" class=\"style-scope traffic-incidents\"></input>"
       },
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle4.Guideline4_1.4_1_1.F77]",
-        "norm": "WCAG2AA.Principle4.Guideline4_1.4_1_1",
+        "principle": "[WCAG2AAA.Principle4.Guideline4_1.4_1_1.F77]",
+        "norm": "WCAG2AAA.Principle4.Guideline4_1.4_1_1",
         "tag": "iron-icon",
         "tag_id": "#icon",
         "error": "Duplicate id attribute value \"icon\" found on the web page.",
         "full_tag": "<iron-icon id=\"icon\" class=\"style-scope paper-icon-button x-scope iron-icon-0\">...</iron-icon>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle4.Guideline4_1.4_1_1.F77|iron-icon|#icon|Duplicate id attribute value \"icon\" found on the web page.|<iron-icon id=\"icon\" class=\"style-scope paper-icon-button x-scope iron-icon-0\">...</iron-icon>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle4.Guideline4_1.4_1_1.F77|iron-icon|#icon|Duplicate id attribute value \"icon\" found on the web page.|<iron-icon id=\"icon\" class=\"style-scope paper-icon-button x-scope iron-icon-0\">...</iron-icon>"
       }
     ],
     "NOTICE": [
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle3.Guideline3_2.3_2_1.G107]",
-        "norm": "WCAG2AA.Principle3.Guideline3_2.3_2_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_1",
         "tag": "input",
         "tag_id": "#searchBox",
         "error": "Check that a change of context does not occur when this input field receives focus.",
         "full_tag": "<input id=\"searchBox\" placeholder=\"Buscar una ciudad\" class=\"style-scope traffic-incidents\"></input>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle3.Guideline3_2.3_2_1.G107|input|#searchBox|Check that a change of context does not occur when this input field receives focus.|<input id=\"searchBox\" placeholder=\"Buscar una ciudad\" class=\"style-scope traffic-incidents\"></input>"
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107|input|#searchBox|Check that a change of context does not occur when this input field receives focus.|<input id=\"searchBox\" placeholder=\"Buscar una ciudad\" class=\"style-scope traffic-incidents\"></input>"
       }
     ],
     "WARNING": [
@@ -366,7 +416,7 @@
         "tag": "<DIV>",
         "tag_id": "",
         "error": "Text elements should have a reasonable contrast ratio",
-        "full_tag": "<div class=\"more_info style-scope traffic-incidents\">\n                   Termina: 18/05/2017  15:46\n                 </div>"
+        "full_tag": "<div class=\"more_info style-scope traffic-incidents\">\n                   Termina: 19/05/2017  17:37\n                 </div>"
       }
     ],
     "PASS": [
@@ -448,25 +498,25 @@
     "ERROR": [
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
-        "norm": "WCAG2AA.Principle4.Guideline4_1.4_1_2",
+        "principle": "[WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
+        "norm": "WCAG2AAA.Principle4.Guideline4_1.4_1_2",
         "tag": "paper-icon-button",
         "tag_id": "#refresh",
         "error": "This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.",
         "full_tag": "<paper-icon-button id=\"refresh\" icon=\"refresh\" class=\"style-scope traffic-incidents x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button|#refresh|This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button id=\"refresh\" icon=\"refresh\" class=\"style-scope traffic-incidents x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button|#refresh|This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button id=\"refresh\" icon=\"refresh\" class=\"style-scope traffic-incidents x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>"
       }
     ],
     "NOTICE": [
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle3.Guideline3_2.3_2_1.G107]",
-        "norm": "WCAG2AA.Principle3.Guideline3_2.3_2_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_1",
         "tag": "input",
         "tag_id": "#searchBox",
         "error": "Check that a change of context does not occur when this input field receives focus.",
         "full_tag": "<input id=\"searchBox\" title=\"Type city or country\" placeholder=\"Buscar una ciudad\" class=\"style-scope traffic-incidents\"></input>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle3.Guideline3_2.3_2_1.G107|input|#searchBox|Check that a change of context does not occur when this input field receives focus.|<input id=\"searchBox\" title=\"Type city or country\" placeholder=\"Buscar una ciudad\" class=\"style-scope traffic-incidents\"></input>"
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107|input|#searchBox|Check that a change of context does not occur when this input field receives focus.|<input id=\"searchBox\" title=\"Type city or country\" placeholder=\"Buscar una ciudad\" class=\"style-scope traffic-incidents\"></input>"
       }
     ],
     "WARNING": [],
@@ -561,67 +611,87 @@
     "ERROR": [
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2]",
-        "norm": "WCAG2AA.Principle3.Guideline3_1.3_1_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_1.3_1_1",
         "tag": "html",
         "tag_id": "",
         "error": "The html element should have a lang or xml:lang attribute which describes the language of the document.",
         "full_tag": "<html><head></head><body>...</body></html>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
       },
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.H37]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_1.1_1_1.H37]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_1.1_1_1",
         "tag": "img",
         "tag_id": "",
         "error": "Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.",
         "full_tag": "<img draggable=\"false\" src=\"http://localhost:8081/facebook-wall-stable/images/facebook.svg\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\">",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle1.Guideline1_1.1_1_1.H37|img||Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.|<img draggable=\"false\" src=\"http://localhost:8081/facebook-wall-stable/images/facebook.svg\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\">"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle1.Guideline1_1.1_1_1.H37|img||Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.|<img draggable=\"false\" src=\"http://localhost:8081/facebook-wall-stable/images/facebook.svg\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\">"
       },
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
-        "norm": "WCAG2AA.Principle4.Guideline4_1.4_1_2",
+        "principle": "[WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
+        "norm": "WCAG2AAA.Principle4.Guideline4_1.4_1_2",
         "tag": "paper-icon-button",
         "tag_id": "",
         "error": "This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.",
         "full_tag": "<paper-icon-button icon=\"refresh\" class=\"style-scope facebook-wall x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button||This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button icon=\"refresh\" class=\"style-scope facebook-wall x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button||This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button icon=\"refresh\" class=\"style-scope facebook-wall x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>"
       },
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle4.Guideline4_1.4_1_1.F77]",
-        "norm": "WCAG2AA.Principle4.Guideline4_1.4_1_1",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.Fail]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_4.1_4_6",
+        "tag": "a",
+        "tag_id": "",
+        "error": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 7:1, but text in this element has a contrast ratio of 6.84:1. Recommendation: change text colour to #395796.",
+        "full_tag": "<a target=\"_blank\" class=\"style-scope facebook-wall\" href=\"https://facebook.com/app_scoped_user_id/10407631866\">...</a>",
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.Fail|a||This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 7:1, but text in this element has a contrast ratio of 6.84:1. Recommendation: change text colour to #395796.|<a target=\"_blank\" class=\"style-scope facebook-wall\" href=\"https://facebook.com/app_scoped_user_id/10407631866\">...</a>"
+      },
+      {
+        "type": "ERROR",
+        "principle": "[WCAG2AAA.Principle4.Guideline4_1.4_1_1.F77]",
+        "norm": "WCAG2AAA.Principle4.Guideline4_1.4_1_1",
         "tag": "iron-icon",
         "tag_id": "#logo",
         "error": "Duplicate id attribute value \"logo\" found on the web page.",
         "full_tag": "<iron-icon id=\"logo\" class=\"style-scope facebook-wall x-scope iron-icon-0\">...</iron-icon>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle4.Guideline4_1.4_1_1.F77|iron-icon|#logo|Duplicate id attribute value \"logo\" found on the web page.|<iron-icon id=\"logo\" class=\"style-scope facebook-wall x-scope iron-icon-0\">...</iron-icon>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle4.Guideline4_1.4_1_1.F77|iron-icon|#logo|Duplicate id attribute value \"logo\" found on the web page.|<iron-icon id=\"logo\" class=\"style-scope facebook-wall x-scope iron-icon-0\">...</iron-icon>"
       }
     ],
     "NOTICE": [
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.G73,G74]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
-        "tag": "img",
+        "principle": "[WCAG2AAA.Principle2.Guideline2_4.2_4_9.H30]",
+        "norm": "WCAG2AAA.Principle2.Guideline2_4.2_4_9",
+        "tag": "a",
         "tag_id": "",
-        "error": "If this image cannot be fully described in a short text alternative, ensure a long text alternative is also available, such as in the body text or through a link.",
-        "full_tag": "<img draggable=\"false\" src=\"http://localhost:8081/facebook-wall-stable/images/facebook.svg\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\">",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle1.Guideline1_1.1_1_1.G73,G74|img||If this image cannot be fully described in a short text alternative, ensure a long text alternative is also available, such as in the body text or through a link.|<img draggable=\"false\" src=\"http://localhost:8081/facebook-wall-stable/images/facebook.svg\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\">"
+        "error": "Check that text of the link describes the purpose of the link.",
+        "full_tag": "<a target=\"_blank\" class=\"style-scope facebook-wall\" href=\"https://facebook.com/app_scoped_user_id/10407631866\">...</a>",
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle2.Guideline2_4.2_4_9.H30|a||Check that text of the link describes the purpose of the link.|<a target=\"_blank\" class=\"style-scope facebook-wall\" href=\"https://facebook.com/app_scoped_user_id/10407631866\">...</a>"
       }
     ],
     "WARNING": [
       {
         "type": "WARNING",
-        "principle": "[WCAG2AA.Principle1.Guideline1_3.1_3_1.H48]",
-        "norm": "WCAG2AA.Principle1.Guideline1_3.1_3_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_5.H83.3]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_5",
+        "tag": "a",
+        "tag_id": "",
+        "error": "Check that this link's link text contains information indicating that the link will open in a new window.",
+        "full_tag": "<a target=\"_blank\" class=\"style-scope facebook-wall\" href=\"https://facebook.com/app_scoped_user_id/10407631866\">...</a>",
+        "full_text": "[HTMLCS] WARNING|WCAG2AAA.Principle3.Guideline3_2.3_2_5.H83.3|a||Check that this link's link text contains information indicating that the link will open in a new window.|<a target=\"_blank\" class=\"style-scope facebook-wall\" href=\"https://facebook.com/app_scoped_user_id/10407631866\">...</a>"
+      },
+      {
+        "type": "WARNING",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_3.1_3_1.H48]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_3.1_3_1",
         "tag": "div",
         "tag_id": "",
         "error": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
         "full_tag": "<div class=\"borderPost style-scope facebook-wall\">...</div>",
-        "full_text": "[HTMLCS] WARNING|WCAG2AA.Principle1.Guideline1_3.1_3_1.H48|div||If this element contains a navigation section, it is recommended that it be marked up as a list.|<div class=\"borderPost style-scope facebook-wall\">...</div>"
+        "full_text": "[HTMLCS] WARNING|WCAG2AAA.Principle1.Guideline1_3.1_3_1.H48|div||If this element contains a navigation section, it is recommended that it be marked up as a list.|<div class=\"borderPost style-scope facebook-wall\">...</div>"
       },
       {
         "type": "WARNING",
@@ -727,37 +797,67 @@
     "ERROR": [
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
-        "norm": "WCAG2AA.Principle4.Guideline4_1.4_1_2",
+        "principle": "[WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
+        "norm": "WCAG2AAA.Principle4.Guideline4_1.4_1_2",
         "tag": "paper-icon-button",
         "tag_id": "",
         "error": "This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.",
         "full_tag": "<paper-icon-button title=\"refresh timeline\" alt=\"refresh\" icon=\"refresh\" class=\"style-scope facebook-wall x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\" aria-label=\"refresh\">...</paper-icon-button>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button||This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button title=\"refresh timeline\" alt=\"refresh\" icon=\"refresh\" class=\"style-scope facebook-wall x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\" aria-label=\"refresh\">...</paper-icon-button>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button||This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button title=\"refresh timeline\" alt=\"refresh\" icon=\"refresh\" class=\"style-scope facebook-wall x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\" aria-label=\"refresh\">...</paper-icon-button>"
+      },
+      {
+        "type": "ERROR",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.Fail]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_4.1_4_6",
+        "tag": "a",
+        "tag_id": "",
+        "error": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 7:1, but text in this element has a contrast ratio of 6.84:1. Recommendation: change text colour to #395796.",
+        "full_tag": "<a target=\"_blank\" class=\"style-scope facebook-wall\" href=\"https://facebook.com/app_scoped_user_id/10407631866\">...</a>",
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.Fail|a||This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 7:1, but text in this element has a contrast ratio of 6.84:1. Recommendation: change text colour to #395796.|<a target=\"_blank\" class=\"style-scope facebook-wall\" href=\"https://facebook.com/app_scoped_user_id/10407631866\">...</a>"
       }
     ],
     "NOTICE": [
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.G94.Image]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_1.1_1_1.G94.Image]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_1.1_1_1",
         "tag": "img",
         "tag_id": "",
         "error": "Ensure that the img element's alt text serves the same purpose and presents the same information as the image.",
         "full_tag": "<img alt=\"Facebook logo\" class=\"logo style-scope facebook-wall\" src=\"http://localhost:8081/facebook-wall-usability/images/facebook.svg\">",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle1.Guideline1_1.1_1_1.G94.Image|img||Ensure that the img element's alt text serves the same purpose and presents the same information as the image.|<img alt=\"Facebook logo\" class=\"logo style-scope facebook-wall\" src=\"http://localhost:8081/facebook-wall-usability/images/facebook.svg\">"
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle1.Guideline1_1.1_1_1.G94.Image|img||Ensure that the img element's alt text serves the same purpose and presents the same information as the image.|<img alt=\"Facebook logo\" class=\"logo style-scope facebook-wall\" src=\"http://localhost:8081/facebook-wall-usability/images/facebook.svg\">"
+      },
+      {
+        "type": "NOTICE",
+        "principle": "[WCAG2AAA.Principle2.Guideline2_4.2_4_9.H30]",
+        "norm": "WCAG2AAA.Principle2.Guideline2_4.2_4_9",
+        "tag": "a",
+        "tag_id": "",
+        "error": "Check that text of the link describes the purpose of the link.",
+        "full_tag": "<a target=\"_blank\" class=\"style-scope facebook-wall\" href=\"https://facebook.com/app_scoped_user_id/10407631866\">...</a>",
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle2.Guideline2_4.2_4_9.H30|a||Check that text of the link describes the purpose of the link.|<a target=\"_blank\" class=\"style-scope facebook-wall\" href=\"https://facebook.com/app_scoped_user_id/10407631866\">...</a>"
       }
     ],
     "WARNING": [
       {
         "type": "WARNING",
-        "principle": "[WCAG2AA.Principle1.Guideline1_3.1_3_1.H48]",
-        "norm": "WCAG2AA.Principle1.Guideline1_3.1_3_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_5.H83.3]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_5",
+        "tag": "a",
+        "tag_id": "",
+        "error": "Check that this link's link text contains information indicating that the link will open in a new window.",
+        "full_tag": "<a target=\"_blank\" class=\"style-scope facebook-wall\" href=\"https://facebook.com/app_scoped_user_id/10407631866\">...</a>",
+        "full_text": "[HTMLCS] WARNING|WCAG2AAA.Principle3.Guideline3_2.3_2_5.H83.3|a||Check that this link's link text contains information indicating that the link will open in a new window.|<a target=\"_blank\" class=\"style-scope facebook-wall\" href=\"https://facebook.com/app_scoped_user_id/10407631866\">...</a>"
+      },
+      {
+        "type": "WARNING",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_3.1_3_1.H48]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_3.1_3_1",
         "tag": "div",
         "tag_id": "",
         "error": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
         "full_tag": "<div class=\"borderPost style-scope facebook-wall\">...</div>",
-        "full_text": "[HTMLCS] WARNING|WCAG2AA.Principle1.Guideline1_3.1_3_1.H48|div||If this element contains a navigation section, it is recommended that it be marked up as a list.|<div class=\"borderPost style-scope facebook-wall\">...</div>"
+        "full_text": "[HTMLCS] WARNING|WCAG2AAA.Principle1.Guideline1_3.1_3_1.H48|div||If this element contains a navigation section, it is recommended that it be marked up as a list.|<div class=\"borderPost style-scope facebook-wall\">...</div>"
       },
       {
         "type": "WARNING",
@@ -857,55 +957,55 @@
     "ERROR": [
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2]",
-        "norm": "WCAG2AA.Principle3.Guideline3_1.3_1_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_1.3_1_1",
         "tag": "html",
         "tag_id": "",
         "error": "The html element should have a lang or xml:lang attribute which describes the language of the document.",
         "full_tag": "<html><head></head><body>...</body></html>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
       },
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
-        "norm": "WCAG2AA.Principle4.Guideline4_1.4_1_2",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.Fail]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_4.1_4_6",
+        "tag": "p",
+        "tag_id": "",
+        "error": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 7:1, but text in this element has a contrast ratio of 4.29:1. Recommendation: change background to #b0190c.",
+        "full_tag": "<p class=\"component_name style-scope googleplus-timeline\">...</p>",
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.Fail|p||This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 7:1, but text in this element has a contrast ratio of 4.29:1. Recommendation: change background to #b0190c.|<p class=\"component_name style-scope googleplus-timeline\">...</p>"
+      },
+      {
+        "type": "ERROR",
+        "principle": "[WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
+        "norm": "WCAG2AAA.Principle4.Guideline4_1.4_1_2",
         "tag": "paper-icon-button",
         "tag_id": "#refresh_button",
         "error": "This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.",
         "full_tag": "<paper-icon-button id=\"refresh_button\" class=\"refresh_button style-scope googleplus-timeline x-scope paper-icon-button-0\" icon=\"refresh\" title=\"refresh\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button|#refresh_button|This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button id=\"refresh_button\" class=\"refresh_button style-scope googleplus-timeline x-scope paper-icon-button-0\" icon=\"refresh\" title=\"refresh\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button|#refresh_button|This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button id=\"refresh_button\" class=\"refresh_button style-scope googleplus-timeline x-scope paper-icon-button-0\" icon=\"refresh\" title=\"refresh\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\">...</paper-icon-button>"
       },
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.H37]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_1.1_1_1.H37]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_1.1_1_1",
         "tag": "img",
         "tag_id": "",
         "error": "Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.",
         "full_tag": "<img src=\"http://localhost:8081/googleplus-timeline-stable/loading.gif\" class=\"style-scope googleplus-timeline\"></img>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle1.Guideline1_1.1_1_1.H37|img||Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.|<img src=\"http://localhost:8081/googleplus-timeline-stable/loading.gif\" class=\"style-scope googleplus-timeline\"></img>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle1.Guideline1_1.1_1_1.H37|img||Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.|<img src=\"http://localhost:8081/googleplus-timeline-stable/loading.gif\" class=\"style-scope googleplus-timeline\"></img>"
       }
     ],
     "NOTICE": [
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.G73,G74]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
-        "tag": "img",
-        "tag_id": "",
-        "error": "If this image cannot be fully described in a short text alternative, ensure a long text alternative is also available, such as in the body text or through a link.",
-        "full_tag": "<img src=\"http://localhost:8081/googleplus-timeline-stable/loading.gif\" class=\"style-scope googleplus-timeline\"></img>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle1.Guideline1_1.1_1_1.G73,G74|img||If this image cannot be fully described in a short text alternative, ensure a long text alternative is also available, such as in the body text or through a link.|<img src=\"http://localhost:8081/googleplus-timeline-stable/loading.gif\" class=\"style-scope googleplus-timeline\"></img>"
-      },
-      {
-        "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle3.Guideline3_2.3_2_1.G107]",
-        "norm": "WCAG2AA.Principle3.Guideline3_2.3_2_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_1",
         "tag": "button",
         "tag_id": "",
         "error": "Check that a change of context does not occur when this input field receives focus.",
         "full_tag": "<button name=\"es\">...</button>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle3.Guideline3_2.3_2_1.G107|button||Check that a change of context does not occur when this input field receives focus.|<button name=\"es\">...</button>"
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107|button||Check that a change of context does not occur when this input field receives focus.|<button name=\"es\">...</button>"
       }
     ],
     "WARNING": [
@@ -1016,13 +1116,13 @@
     "ERROR": [
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2]",
-        "norm": "WCAG2AA.Principle3.Guideline3_1.3_1_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_1.3_1_1",
         "tag": "html",
         "tag_id": "",
         "error": "The html element should have a lang or xml:lang attribute which describes the language of the document.",
         "full_tag": "<html><head></head><body>...</body></html>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
       }
     ],
     "NOTICE": [],
@@ -1068,43 +1168,43 @@
     "ERROR": [
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2]",
-        "norm": "WCAG2AA.Principle3.Guideline3_1.3_1_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_1.3_1_1",
         "tag": "html",
         "tag_id": "",
         "error": "The html element should have a lang or xml:lang attribute which describes the language of the document.",
         "full_tag": "<html style=\"\"><head></head><body>...</body></html>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html style=\"\"><head></head><body>...</body></html>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html style=\"\"><head></head><body>...</body></html>"
       },
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.H37]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_1.1_1_1.H37]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_1.1_1_1",
         "tag": "img",
         "tag_id": "",
         "error": "Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.",
         "full_tag": "<img draggable=\"false\" src=\"http://localhost:8081/pinterest-timeline-stable/logo-pinterest.png\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\"></img>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle1.Guideline1_1.1_1_1.H37|img||Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.|<img draggable=\"false\" src=\"http://localhost:8081/pinterest-timeline-stable/logo-pinterest.png\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\"></img>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle1.Guideline1_1.1_1_1.H37|img||Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.|<img draggable=\"false\" src=\"http://localhost:8081/pinterest-timeline-stable/logo-pinterest.png\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\"></img>"
       },
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
-        "norm": "WCAG2AA.Principle4.Guideline4_1.4_1_2",
+        "principle": "[WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name]",
+        "norm": "WCAG2AAA.Principle4.Guideline4_1.4_1_2",
         "tag": "paper-icon-button",
         "tag_id": "",
         "error": "This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.",
         "full_tag": "<paper-icon-button icon=\"refresh\" class=\"style-scope pinterest-timeline x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\" hidden=\"\">...</paper-icon-button>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button||This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button icon=\"refresh\" class=\"style-scope pinterest-timeline x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\" hidden=\"\">...</paper-icon-button>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle4.Guideline4_1.4_1_2.H91.Paper-icon-button.Name|paper-icon-button||This element has a role of \"button\" but does not have a name available to an accessibility API. Valid names are: element content.|<paper-icon-button icon=\"refresh\" class=\"style-scope pinterest-timeline x-scope paper-icon-button-0\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\" hidden=\"\">...</paper-icon-button>"
       },
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle4.Guideline4_1.4_1_1.F77]",
-        "norm": "WCAG2AA.Principle4.Guideline4_1.4_1_1",
+        "principle": "[WCAG2AAA.Principle4.Guideline4_1.4_1_1.F77]",
+        "norm": "WCAG2AAA.Principle4.Guideline4_1.4_1_1",
         "tag": "iron-icon",
         "tag_id": "#icon",
         "error": "Duplicate id attribute value \"icon\" found on the web page.",
         "full_tag": "<iron-icon id=\"icon\" class=\"style-scope paper-icon-button x-scope iron-icon-1\">...</iron-icon>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle4.Guideline4_1.4_1_1.F77|iron-icon|#icon|Duplicate id attribute value \"icon\" found on the web page.|<iron-icon id=\"icon\" class=\"style-scope paper-icon-button x-scope iron-icon-1\">...</iron-icon>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle4.Guideline4_1.4_1_1.F77|iron-icon|#icon|Duplicate id attribute value \"icon\" found on the web page.|<iron-icon id=\"icon\" class=\"style-scope paper-icon-button x-scope iron-icon-1\">...</iron-icon>"
       },
       {
         "type": "ERROR",
@@ -1118,26 +1218,26 @@
     "NOTICE": [
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.G73,G74]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
-        "tag": "img",
-        "tag_id": "",
-        "error": "If this image cannot be fully described in a short text alternative, ensure a long text alternative is also available, such as in the body text or through a link.",
-        "full_tag": "<img draggable=\"false\" src=\"http://localhost:8081/pinterest-timeline-stable/logo-pinterest.png\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\"></img>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle1.Guideline1_1.1_1_1.G73,G74|img||If this image cannot be fully described in a short text alternative, ensure a long text alternative is also available, such as in the body text or through a link.|<img draggable=\"false\" src=\"http://localhost:8081/pinterest-timeline-stable/logo-pinterest.png\" class=\"style-scope iron-icon\" style=\"width: 100%; height: 100%;\"></img>"
-      },
-      {
-        "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle3.Guideline3_2.3_2_1.G107]",
-        "norm": "WCAG2AA.Principle3.Guideline3_2.3_2_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_1",
         "tag": "button",
         "tag_id": "",
         "error": "Check that a change of context does not occur when this input field receives focus.",
         "full_tag": "<button name=\"es\">...</button>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle3.Guideline3_2.3_2_1.G107|button||Check that a change of context does not occur when this input field receives focus.|<button name=\"es\">...</button>"
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107|button||Check that a change of context does not occur when this input field receives focus.|<button name=\"es\">...</button>"
       }
     ],
     "WARNING": [
+      {
+        "type": "WARNING",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.BgImage]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_4.1_4_6",
+        "tag": "span",
+        "tag_id": "#paper-toolbar-label-3798",
+        "error": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 7:1.",
+        "full_tag": "<span class=\"title flex style-scope pinterest-timeline\" id=\"paper-toolbar-label-3798\">...</span>",
+        "full_text": "[HTMLCS] WARNING|WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.BgImage|span|#paper-toolbar-label-3798|This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 7:1.|<span class=\"title flex style-scope pinterest-timeline\" id=\"paper-toolbar-label-3798\">...</span>"
+      },
       {
         "type": "WARNING",
         "norm": "AX_HTML_01",
@@ -1258,35 +1358,65 @@
     "NOTICE": [
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.G94.Image]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_1.1_1_1.G94.Image]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_1.1_1_1",
         "tag": "img",
         "tag_id": "",
         "error": "Ensure that the img element's alt text serves the same purpose and presents the same information as the image.",
         "full_tag": "<img alt=\"pinterest logo\" src=\"http://localhost:8081/pinterest-timeline-usability/logo-pinterest.png\" class=\"icon style-scope pinterest-timeline\"></img>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle1.Guideline1_1.1_1_1.G94.Image|img||Ensure that the img element's alt text serves the same purpose and presents the same information as the image.|<img alt=\"pinterest logo\" src=\"http://localhost:8081/pinterest-timeline-usability/logo-pinterest.png\" class=\"icon style-scope pinterest-timeline\"></img>"
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle1.Guideline1_1.1_1_1.G94.Image|img||Ensure that the img element's alt text serves the same purpose and presents the same information as the image.|<img alt=\"pinterest logo\" src=\"http://localhost:8081/pinterest-timeline-usability/logo-pinterest.png\" class=\"icon style-scope pinterest-timeline\"></img>"
       },
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle3.Guideline3_2.3_2_1.G107]",
-        "norm": "WCAG2AA.Principle3.Guideline3_2.3_2_1",
+        "principle": "[WCAG2AAA.Principle2.Guideline2_4.2_4_9.H30]",
+        "norm": "WCAG2AAA.Principle2.Guideline2_4.2_4_9",
+        "tag": "a",
+        "tag_id": "",
+        "error": "Check that text of the link describes the purpose of the link.",
+        "full_tag": "<a target=\"_blank\" class=\"style-scope pinterest-timeline\" href=\"https://www.pinterest.com/pin/98657048070413194/\">...</a>",
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle2.Guideline2_4.2_4_9.H30|a||Check that text of the link describes the purpose of the link.|<a target=\"_blank\" class=\"style-scope pinterest-timeline\" href=\"https://www.pinterest.com/pin/98657048070413194/\">...</a>"
+      },
+      {
+        "type": "NOTICE",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_1",
         "tag": "button",
         "tag_id": "",
         "error": "Check that a change of context does not occur when this input field receives focus.",
         "full_tag": "<button name=\"es\">...</button>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle3.Guideline3_2.3_2_1.G107|button||Check that a change of context does not occur when this input field receives focus.|<button name=\"es\">...</button>"
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107|button||Check that a change of context does not occur when this input field receives focus.|<button name=\"es\">...</button>"
       }
     ],
     "WARNING": [
       {
         "type": "WARNING",
-        "principle": "[WCAG2AA.Principle1.Guideline1_3.1_3_1.H48]",
-        "norm": "WCAG2AA.Principle1.Guideline1_3.1_3_1",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.BgImage]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_4.1_4_6",
+        "tag": "span",
+        "tag_id": "#paper-toolbar-label-2008",
+        "error": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 7:1.",
+        "full_tag": "<span class=\"title flex style-scope pinterest-timeline\" id=\"paper-toolbar-label-2008\">...</span>",
+        "full_text": "[HTMLCS] WARNING|WCAG2AAA.Principle1.Guideline1_4.1_4_6.G17.BgImage|span|#paper-toolbar-label-2008|This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 7:1.|<span class=\"title flex style-scope pinterest-timeline\" id=\"paper-toolbar-label-2008\">...</span>"
+      },
+      {
+        "type": "WARNING",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_3.1_3_1.H48]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_3.1_3_1",
         "tag": "div",
         "tag_id": "",
         "error": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
         "full_tag": "<div class=\"content style-scope pinterest-timeline\">...</div>",
-        "full_text": "[HTMLCS] WARNING|WCAG2AA.Principle1.Guideline1_3.1_3_1.H48|div||If this element contains a navigation section, it is recommended that it be marked up as a list.|<div class=\"content style-scope pinterest-timeline\">...</div>"
+        "full_text": "[HTMLCS] WARNING|WCAG2AAA.Principle1.Guideline1_3.1_3_1.H48|div||If this element contains a navigation section, it is recommended that it be marked up as a list.|<div class=\"content style-scope pinterest-timeline\">...</div>"
+      },
+      {
+        "type": "WARNING",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_5.H83.3]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_5",
+        "tag": "a",
+        "tag_id": "",
+        "error": "Check that this link's link text contains information indicating that the link will open in a new window.",
+        "full_tag": "<a target=\"_blank\" class=\"style-scope pinterest-timeline\" href=\"https://www.pinterest.com/pin/98657048070413194/\">...</a>",
+        "full_text": "[HTMLCS] WARNING|WCAG2AAA.Principle3.Guideline3_2.3_2_5.H83.3|a||Check that this link's link text contains information indicating that the link will open in a new window.|<a target=\"_blank\" class=\"style-scope pinterest-timeline\" href=\"https://www.pinterest.com/pin/98657048070413194/\">...</a>"
       },
       {
         "type": "WARNING",
@@ -1413,37 +1543,16 @@
     "ERROR": [
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2]",
-        "norm": "WCAG2AA.Principle3.Guideline3_1.3_1_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_1.3_1_1",
         "tag": "html",
         "tag_id": "",
         "error": "The html element should have a lang or xml:lang attribute which describes the language of the document.",
         "full_tag": "<html><head></head><body>...</body></html>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
-      },
-      {
-        "type": "ERROR",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.H37]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
-        "tag": "img",
-        "tag_id": "",
-        "error": "Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.",
-        "full_tag": "<img class=\"prettyIcon style-scope open-weather\" src=\"http://i.imgur.com/8emVn0q.png\"></img>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle1.Guideline1_1.1_1_1.H37|img||Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.|<img class=\"prettyIcon style-scope open-weather\" src=\"http://i.imgur.com/8emVn0q.png\"></img>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
       }
     ],
-    "NOTICE": [
-      {
-        "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.G73,G74]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
-        "tag": "img",
-        "tag_id": "",
-        "error": "If this image cannot be fully described in a short text alternative, ensure a long text alternative is also available, such as in the body text or through a link.",
-        "full_tag": "<img class=\"prettyIcon style-scope open-weather\" src=\"http://i.imgur.com/8emVn0q.png\"></img>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle1.Guideline1_1.1_1_1.G73,G74|img||If this image cannot be fully described in a short text alternative, ensure a long text alternative is also available, such as in the body text or through a link.|<img class=\"prettyIcon style-scope open-weather\" src=\"http://i.imgur.com/8emVn0q.png\"></img>"
-      }
-    ],
+    "NOTICE": [],
     "WARNING": [
       {
         "type": "WARNING",
@@ -1452,16 +1561,7 @@
         "tag": "<HTML>",
         "tag_id": "",
         "error": "The web page should have the content's human language indicated in the markup",
-        "full_tag": "<html><head><style scope=\"iron-icon-0\"></style scope=\"iron-icon-0\"></head></html>"
-      },
-      {
-        "type": "WARNING",
-        "norm": "AX_TEXT_02",
-        "principle": "AX_TEXT_02.imagesWithoutAltText",
-        "tag": "<IMG>",
-        "tag_id": "",
-        "error": "Images should have a text alternative or presentational role",
-        "full_tag": "<img class=\"prettyIcon style-scope open-weather\" src=\"http://i.imgur.com/8emVn0q.png\">>></img class=\"prettyIcon style-scope open-weather\" src=\"http://i.imgur.com/8emVn0q.png\">"
+        "full_tag": "<html><head><style scope=\"open-weather\"></style scope=\"open-weather\"></head></html>"
       }
     ],
     "PASS": [
@@ -1496,13 +1596,13 @@
     "NOTICE": [
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle1.Guideline1_1.1_1_1.G94.Image]",
-        "norm": "WCAG2AA.Principle1.Guideline1_1.1_1_1",
+        "principle": "[WCAG2AAA.Principle1.Guideline1_1.1_1_1.G94.Image]",
+        "norm": "WCAG2AAA.Principle1.Guideline1_1.1_1_1",
         "tag": "img",
         "tag_id": "",
         "error": "Ensure that the img element's alt text serves the same purpose and presents the same information as the image.",
-        "full_tag": "<img class=\"prettyIcon style-scope open-weather\" src=\"http://i.imgur.com/8emVn0q.png\" alt=\"cielo claro\"></img>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle1.Guideline1_1.1_1_1.G94.Image|img||Ensure that the img element's alt text serves the same purpose and presents the same information as the image.|<img class=\"prettyIcon style-scope open-weather\" src=\"http://i.imgur.com/8emVn0q.png\" alt=\"cielo claro\"></img>"
+        "full_tag": "<img class=\"prettyIcon style-scope open-weather\" src=\"http://i.imgur.com/VzKmO0h.png\" alt=\"algo de nubes\"></img>",
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle1.Guideline1_1.1_1_1.G94.Image|img||Ensure that the img element's alt text serves the same purpose and presents the same information as the image.|<img class=\"prettyIcon style-scope open-weather\" src=\"http://i.imgur.com/VzKmO0h.png\" alt=\"algo de nubes\"></img>"
       }
     ],
     "WARNING": [],
@@ -1549,25 +1649,25 @@
     "ERROR": [
       {
         "type": "ERROR",
-        "principle": "[WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2]",
-        "norm": "WCAG2AA.Principle3.Guideline3_1.3_1_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_1.3_1_1",
         "tag": "html",
         "tag_id": "",
         "error": "The html element should have a lang or xml:lang attribute which describes the language of the document.",
         "full_tag": "<html><head></head><body>...</body></html>",
-        "full_text": "[HTMLCS] ERROR|WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
+        "full_text": "[HTMLCS] ERROR|WCAG2AAA.Principle3.Guideline3_1.3_1_1.H57.2|html||The html element should have a lang or xml:lang attribute which describes the language of the document.|<html><head></head><body>...</body></html>"
       }
     ],
     "NOTICE": [
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle3.Guideline3_2.3_2_1.G107]",
-        "norm": "WCAG2AA.Principle3.Guideline3_2.3_2_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_1",
         "tag": "input",
         "tag_id": "#company",
         "error": "Check that a change of context does not occur when this input field receives focus.",
         "full_tag": "<input aria-label=\"type a company name\" id=\"company\" placeholder=\"Company\" class=\"style-scope search-company\"></input>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle3.Guideline3_2.3_2_1.G107|input|#company|Check that a change of context does not occur when this input field receives focus.|<input aria-label=\"type a company name\" id=\"company\" placeholder=\"Company\" class=\"style-scope search-company\"></input>"
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107|input|#company|Check that a change of context does not occur when this input field receives focus.|<input aria-label=\"type a company name\" id=\"company\" placeholder=\"Company\" class=\"style-scope search-company\"></input>"
       }
     ],
     "WARNING": [
@@ -1643,13 +1743,13 @@
     "NOTICE": [
       {
         "type": "NOTICE",
-        "principle": "[WCAG2AA.Principle3.Guideline3_2.3_2_1.G107]",
-        "norm": "WCAG2AA.Principle3.Guideline3_2.3_2_1",
+        "principle": "[WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107]",
+        "norm": "WCAG2AAA.Principle3.Guideline3_2.3_2_1",
         "tag": "input",
         "tag_id": "#company",
         "error": "Check that a change of context does not occur when this input field receives focus.",
         "full_tag": "<input aria-label=\"type a company name\" id=\"company\" placeholder=\"Company\" class=\"style-scope search-company\"></input>",
-        "full_text": "[HTMLCS] NOTICE|WCAG2AA.Principle3.Guideline3_2.3_2_1.G107|input|#company|Check that a change of context does not occur when this input field receives focus.|<input aria-label=\"type a company name\" id=\"company\" placeholder=\"Company\" class=\"style-scope search-company\"></input>"
+        "full_text": "[HTMLCS] NOTICE|WCAG2AAA.Principle3.Guideline3_2.3_2_1.G107|input|#company|Check that a change of context does not occur when this input field receives focus.|<input aria-label=\"type a company name\" id=\"company\" placeholder=\"Company\" class=\"style-scope search-company\"></input>"
       }
     ],
     "WARNING": [
