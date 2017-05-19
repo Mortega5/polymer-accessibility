@@ -35,7 +35,7 @@ and [HTML_CodeSniffer](https://github.com/squizlabs/HTML_CodeSniffer).
 ## Config file optios
 
 | Parametro        | Descripcion                               | Default   |
-|:----------------:|-------------------------------------------|----------:|
+|:----------------:|-------------------------------------------|:---------:|
 | *port*           | Server port                               | 8080      |
 | *timeout*        | Delay before to execute test              | 0         |
 | *root*           | Root folder where server will be deployed | .         |
@@ -44,7 +44,7 @@ and [HTML_CodeSniffer](https://github.com/squizlabs/HTML_CodeSniffer).
 | *verbose*        | Show all the output information           | true      |
 | *brief*          | Only display test results                 | false     |
 | *wcag2*          | Enable/disable wcag2 test                 | true      |
-| *wcag2_level*    | Set wcag2 test level (A, AA or AAA)       | AA        |
+| *wcag2_level*    | Set wcag2 test level (A, AA or AAA)       | AAA       |
 | *a11y*           | Enable/disable a11y test                  | true      |
 | *skip_errors*    | HTML errors will not displayed            | false     |
 | *log*            | Set log level (error,info, debug)         | info      |
@@ -108,6 +108,6 @@ A11y and WCAG have similar norms. This file set the equivalences between A11Y an
   "AX_COLOR_01": "1_4_3",
   "AX_VIDEO_01": "1_2_1",
   "AX_TABLE_01": "1_3_1",
-  "AX_TOOLTIP_01": "WAI-ARIA.2.23"
+  "AX_TOOLTIP_01": ""
 }
 ```
