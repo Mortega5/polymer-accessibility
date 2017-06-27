@@ -460,7 +460,7 @@ function analyze_file(file, component_name) {
         });
         page.on('onCallback', function (msg) {
           function print(item) {
-            if (ORDER[item.type] <= ORDER[program.level]) {
+            if (ORDER[item.type] <= ORDER[program.log]) {
               failed++;
               if (item.type !== 'PASS') {
                 console.log('\t', COLOR[item.type]);
