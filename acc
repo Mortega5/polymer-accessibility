@@ -23,14 +23,16 @@ var log4js = require('log4js');
 var fs = require('fs');
 var Mixpanel = require('mixpanel');
 
-var WCAG2A_RULES = require('./wcag_norms/WCAG2A.js');
-var WCAG2AA_RULES = require('./wcag_norms/WCAG2AA.js');
-var WCAG2AAA_RULES = require('./wcag_norms/WCAG2AAA.js');
+var WCAG2A_RULES = require('./wcag_norms/WCAG2A');
+var WCAG2AA_RULES = require('./wcag_norms/WCAG2AA');
+var WCAG2AAA_RULES = require('./wcag_norms/WCAG2AAA');
+var A11Y_RULES = require('./wcag_norms/A11y');
 
-var WCAG2A_TOTAL = 26;
-var WCAG2AA_TOTAL = 40;
-var WCAG2AAA_TOTAL = 54;
-var A11Y_TOTAL = 29;
+var WEIGHT = require('./wcag_norms/weight');
+var WCAG2A_TOTAL = WCAG2A_RULES.length;
+var WCAG2AA_TOTAL = WCAG2AA_RULES.length;
+var WCAG2AAA_TOTAL = WCAG2AAA_RULES.length;
+var A11Y_TOTAL = A11Y_RULES.length;
 var EXP_ID; 
 
 
@@ -161,6 +163,7 @@ function checkNorms(errors){
     if (WCAG2AA_RULES.indexOf(principle) != -1)  WCAG2AA = false;
     if (WCAG2AAA_RULES.indexOf(principle) != -1)  WCAG2A = false;
     if(element.norm.indexOf('AX') != -1 )       A11Y = false;
+    // if (A11Y_RULES.indexOf(e.norm) != -1 ) A11Y = false;
   });
   
   return {WCAG2A:WCAG2A,WCAG2AA:WCAG2AA,WCAG2AAA:WCAG2AAA,A11Y:A11Y};
@@ -269,7 +272,11 @@ function sendToMixpanel(list_errors, component) {
   }
 
   var warning = list_errors.WARNING.length;
-  var errors = list_errors.ERROR.length + Math.floor(warning / program.config.errorsByWarning);
+  //var errors = list_errors.ERROR.length + Math.floor(warning / program.config.errorsByWarning);
+  var errors = 0;
+  list_errors.ERROR.forEach(function(norm){
+    errors += norm.weight || 1;
+  });
   var pass = list_errors.PASS.length;
 
   var total = WCAG2AAA_TOTAL + A11Y_TOTAL - EQUIVALENTS_NORM;
@@ -344,13 +351,16 @@ function analyze_file(file, component_name) {
             result_split = msg.split('|');
             var norm_split = result_split[1].split(".");
             var norm;
+            var weight;
             if (norm_split.length > 0) {
               norm = norm_split.slice(0, 4).join(".");
+              weight = WEIGHT[norm_split.slice(1,4).join(".")];
             }
             report = {
               type: result_split[0].split(" ")[1],
               principle: '[' + result_split[1] + ']',
               norm: norm,
+              weight: weight,
               tag: result_split[2],
               tag_id: result_split[3],
               error: result_split[4],
@@ -363,13 +373,16 @@ function analyze_file(file, component_name) {
             var type = result_split[0].split(" ")[1].toUpperCase();
             var norm_split = result_split[1];
             var norm;
+            var weight;
             if (norm_split.length > 0){
               norm = norm_split.split('.')[0];
+              weight = WEIGHT[norm];
             }
             if (type !== 'PASS') {
               report = {
                 type: type,
                 norm: norm,
+                weight:weight,
                 principle: result_split[1],
                 tag: '<' + result_split[2] + '>',
                 tag_id: result_split[3],
@@ -401,6 +414,7 @@ function analyze_file(file, component_name) {
             document.addEventListener('WebComponentsReady', function () {
               window.setTimeout(function () {
                 window.callPhantom({ text: 'Antes de llamar a las auditorias', type: 'DEBUG' });
+                //window.callPhantom({ text: 'Probando ---> ' + document.querySelector('reddit-timeline').children, type: 'DEBUG' });
                 // check if wcag2 is disable
                 if (config.wcag2) {
                   window.callPhantom({ text: 'WCAG2' + wcag2, type: 'DEBUG' });

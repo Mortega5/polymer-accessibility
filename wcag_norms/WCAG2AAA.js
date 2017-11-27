@@ -1,4 +1,3 @@
-
 var WCAG2AAA = [
   'Principle1.Guideline1_1.1_1_1',
   'Principle1.Guideline1_2.1_2_1',
