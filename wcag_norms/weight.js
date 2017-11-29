@@ -2,333 +2,416 @@ module.exports = {
   "Principle1.Guideline1_1.1_1_1":
   {
     "category":"Alternative_text",
-    "weigth":"1.5",
+    "weigth":"1.5"
+  },
   "Principle1.Guideline1_2.1_2_1":
   {
     "category":"Alternative_text",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_2.1_2_2":
   {
     "category":"Alternative_text",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_2.1_2_4":
   {
     "category":"Alternative_text",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_2.1_2_5":
   {
     "category":"Media",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_2.1_2_6":
   {
     "category":"Interpretation",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_2.1_2_7":
   {
     "category":"Media",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_2.1_2_8":
   {
     "category":"Media",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_2.1_2_9":
   {
     "category":"Alternative_text",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_3.1_3_1":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_3.1_3_1_AAA":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_3.1_3_2":
   {
     "category":"Interpretation",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_3.1_3_3":
   {
     "category":"Style",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_4.1_4_1":
   {
     "category":"Style",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_4.1_4_2":
   {
     "category":"Media",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_4.1_4_3_F24":
   {
     "category":"Contrast",
-    "weigth":"1.5",
+    "weigth":"1.5"
+  },
   "Principle1.Guideline1_4.1_4_3_Contrast":
   {
     "category":"Contrast",
-    "weigth":"2",
+    "weigth":"2"
+  },
   "Principle1.Guideline1_4.1_4_6":
   {
     "category":"Contrast",
-    "weigth":"1.5",
+    "weigth":"1.5"
+  },
   "Principle1.Guideline1_4.1_4_7":
   {
     "category":"Media",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle1.Guideline1_4.1_4_8":
   {
     "category":"Style",
-    "weigth":"2",
+    "weigth":"2"
+  },
   "Principle1.Guideline1_4.1_4_9":
   {
     "category":"Style",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_1.2_1_1":
   {
     "category":"Keyboard_interface",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_1.2_1_2":
   {
     "category":"Keyboard_interface",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_2.2_2_2":
   {
     "category":"move_scroll_flash",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_2.2_2_3":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_2.2_2_4":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_2.2_2_5":
   {
     "category":"Security",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_3.2_3_2":
   {
     "category":"move_scroll_flash",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_4.2_4_1":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_4.2_4_2":
   {
     "category":"Description",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_4.2_4_3":
   {
     "category":"Navigate_web_page",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_4.2_4_5":
   {
     "category":"Navigate_web_page",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_4.2_4_6":
   {
     "category":"Description",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_4.2_4_7":
   {
     "category":"Keyboard_interface",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_4.2_4_8":
   {
     "category":"Navigate_web_page",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle2.Guideline2_4.2_4_9":
   {
     "category":"Navigate_web_page",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_1.3_1_1":
   {
     "category":"Language",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_1.3_1_2":
   {
     "category":"Language",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_1.3_1_3":
   {
     "category":"Language",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_1.3_1_4":
   {
     "category":"Language",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_1.3_1_5":
   {
     "category":"Language",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_1.3_1_6":
   {
     "category":"Language",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_2.3_2_1":
   {
     "category":"Style",
-    "weigth":"1.3",
+    "weigth":"1.3"
+  },
   "Principle3.Guideline3_2.3_2_2":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_2.3_2_3":
   {
     "category":"navigate_web_page",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_2.3_2_4":
   {
     "category":"Description",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_2.3_2_5":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_3.3_3_1":
   {
     "category":"Keyboard_interface",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_3.3_3_2":
   {
     "category":"Keyboard_interface",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_3.3_3_3":
   {
     "category":"Keyboard_interface",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_3.3_3_5":
   {
     "category":"Description",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle3.Guideline3_3.3_3_6":
   {
     "category":"Security",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle4.Guideline4_1.4_1_1":
   {
     "category":"HTML",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "Principle4.Guideline4_1.4_1_2":
   {
     "category":"HTML",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_ARIA_01":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_ARIA_02":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_ARIA_03":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_ARIA_04":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_ARIA_05":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_ARIA_06":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_ARIA_07":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_ARIA_08":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_ARIA_09":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_ARIA_10":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_ARIA_11":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_ARIA_12":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_ARIA_13":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_AUDIO_01":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_HTML_01":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_HTML_02":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_TEXT_01":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_TEXT_02":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_TEXT_03":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_TEXT_04":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_TITLE_01":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_IMAGE_01":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_FOCUS_01":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_FOCUS_02":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_FOCUS_03":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_COLOR_01":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_VIDEO_01":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_TABLE_01":
   {
     "category":"",
-    "weigth":"1",
+    "weigth":"1"
+  },
   "AX_TOOLTIP_01":
   {
     "category":"",
-    "weigth":"1"
+    "weigth":""1"
+  }
 }
