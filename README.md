@@ -34,7 +34,7 @@ and [HTML_CodeSniffer](https://github.com/squizlabs/HTML_CodeSniffer).
 ```
 ## Config file options
 
-| Parametro        | Descripcion                               | Default   |
+| Param            | Description                               | Default   |
 |:----------------:|-------------------------------------------|:---------:|
 | *port*           | Server port                               | 8080      |
 | *timeout*        | Delay before to execute test              | 0         |
