@@ -1,6 +1,6 @@
 # POLYMER ACCESSIBILITY TOOL
 
-Web component accessibility evaluation tool. It use
+Web component accessibility evaluation tool. It uses
 [accessibility-developer-tools](https://github.com/GoogleChrome/accessibility-developer-tools)
 and [HTML_CodeSniffer](https://github.com/squizlabs/HTML_CodeSniffer).
 
