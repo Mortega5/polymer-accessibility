@@ -271,147 +271,147 @@ module.exports = {
   },
   "AX_ARIA_01":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_ARIA_02":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_ARIA_03":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_ARIA_04":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_ARIA_05":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_ARIA_06":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_ARIA_07":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_ARIA_08":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_ARIA_09":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_ARIA_10":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_ARIA_11":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_ARIA_12":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_ARIA_13":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_AUDIO_01":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_HTML_01":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_HTML_02":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_TEXT_01":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_TEXT_02":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_TEXT_03":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_TEXT_04":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_TITLE_01":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_IMAGE_01":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_FOCUS_01":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_FOCUS_02":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_FOCUS_03":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_COLOR_01":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_VIDEO_01":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_TABLE_01":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   },
   "AX_TOOLTIP_01":
   {
-    "category":"AX",
+    "category":"13",
     "weigth":"1"
   }
 }
