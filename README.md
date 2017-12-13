@@ -32,7 +32,7 @@ and [HTML_CodeSniffer](https://github.com/squizlabs/HTML_CodeSniffer).
     --token                      Mixpanel token
 
 ```
-## Config file optios
+## Config file options
 
 | Parametro        | Descripcion                               | Default   |
 |:----------------:|-------------------------------------------|:---------:|
